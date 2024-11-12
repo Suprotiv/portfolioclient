@@ -1,10 +1,12 @@
 import React from 'react';
 import { FaBullhorn, FaVideo, FaMagic, FaVolumeUp } from 'react-icons/fa'; // New icons based on services
 import ServiceCard from './ServiceCard';
+import { useNavigate } from 'react-router-dom';
 
 const ServiceSection = () => {
+  const navigate=useNavigate()
   return (
-    <section className="text-white py-8 md:py-8 px-8  bl1">
+    <section className="text-white py-8 md:py-8 px-8  bl4">
       <div className='flex flex-col gap-8 md:flex-row'>
         <div className="max-w-7xl mx-auto text-center mt-[8vh]">
           <h2 className="text-[#1fd1ff] uppercase text-lg">About Me</h2>
@@ -12,7 +14,7 @@ const ServiceSection = () => {
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
           If you're looking for polished, engaging content that captures attention and aligns with your brand’s vision, I’m here to bring it to life.
           </p>
-          <button className="top-10 relative group text-white font-bold py-4 px-6 border-none bg-transparent tracking-wide transition-all duration-500">
+          <button onClick={()=> navigate('/services')} className="top-10 relative group text-white font-bold py-4 px-6 border-none bg-transparent tracking-wide transition-all duration-500">
             VIEW ALL SERVICES
             {/* Animated button border effect */}
             <span className="absolute top-0 left-0 w-5 h-0.5 bg-[#1fd1ff] transition-all duration-500 group-hover:w-full"></span>

@@ -14,11 +14,21 @@ const Navbar = () => {
 
   useEffect(() => {
     if (menuOpen) {
+     if (window.scrollY >= 80) {
+      setIsScrolled(true);
       setNavbarClass({
-        backgroundColor: 'bg-transparent', 
-        padding: 'py-1',
-        textColor: 'text-white', 
+        backgroundColor: 'bg-black',
+        padding: 'py-1 md:py-0',
+        textColor: 'text-white',
       });
+    } else if (window.scrollY <= 80 ) {
+      setIsScrolled(false);
+      setNavbarClass({
+        backgroundColor: 'bg-transparent',
+        padding: 'py-1 md:py-0',
+        textColor: 'text-white',
+      });
+    }
     }
   }, [menuOpen]);
 
@@ -28,7 +38,7 @@ const Navbar = () => {
       setIsScrolled(true);
       setNavbarClass({
         backgroundColor: 'bg-black',
-        padding: 'py-1',
+        padding: 'py-1 md:py-0',
         textColor: 'text-white',
       });
     } else if (window.scrollY <= 80 && !menuOpen) {
@@ -64,14 +74,14 @@ const Navbar = () => {
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
         <Link to='/'>
-          <h1 className={`text-2xl relative font-semibold px-2 z-50 animate-fadeInTopToBottom   left-2 ${navbarClass.textColor}`}>
+          <h1 className={`text-2xl relative font-semibold px-2 z-50    left-2 ${navbarClass.textColor}`}>
             RickYz
           </h1>
         </Link>
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="inline-flex animate-fadeInTopToBottom items-center z-50 p-2 text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none   dark:text-gray-400 "
+          className="inline-flex items-center z-50 p-2 text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none   dark:text-gray-400 "
           aria-controls="navbar-sticky"
           aria-expanded={menuOpen}
         >
@@ -97,34 +107,38 @@ const Navbar = () => {
           id="navbar-sticky"
         >
           <ul className="flex flex-col p-4 pt-[7vh] md:pt-4 rounded-b-xl relative z-30 bg-black  border border-black md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:bg-transparent md:border-0">
-            <li className=" animate-fadeInTopToBottom">
+            <li className=" animate-fadeInTopToBottom md:animate-none">
               <Link to='/'>
                 <span className={`block py-2 px-3 text-md rounded ${navbarClass.textColor} md:hover:text-[#1fd1ff] md:p-0 md:dark:hover:text-[#1fd1ff] transition-all duration-500`}>
                   Home
                 </span>
               </Link>
             </li>
-            <li className="animate-fadeInTopToBottom">
+            <li className="animate-fadeInTopToBottom md:animate-none">
               <Link to='/portfolio'>
                 <span className={`block py-2 px-3 text-md rounded ${navbarClass.textColor} md:hover:text-[#1fd1ff] md:p-0 md:dark:hover:text-[#1fd1ff] transition-all duration-500`}>
                   Portfolio
                 </span>
               </Link>
             </li>
-            <li className="animate-fadeInTopToBottom">
+            <li className="animate-fadeInTopToBottom md:animate-none">
+              <Link to='/services'>
               <span className={`block py-2 px-3 text-md rounded ${navbarClass.textColor} md:hover:text-[#1fd1ff] md:p-0 md:dark:hover:text-[#1fd1ff] transition-all duration-500`}>
                 Services
               </span>
+              </Link>
             </li>
-            <li className="animate-fadeInTopToBottom">
+            <li className="animate-fadeInTopToBottom md:animate-none">
               <span className={`block py-2 px-3 text-md rounded ${navbarClass.textColor} md:hover:text-[#1fd1ff] md:p-0 md:dark:hover:text-[#1fd1ff] transition-all duration-500`}>
                 Contact
               </span>
             </li>
-            <li className="animate-fadeInTopToBottom">
+            <li className="animate-fadeInTopToBottom md:animate-none">
+              <Link to='/about'>
               <span className={`block py-2 px-3 text-md rounded ${navbarClass.textColor} md:hover:text-[#1fd1ff] md:p-0 md:dark:hover:text-[#1fd1ff] transition-all duration-500`}>
                 About
               </span>
+              </Link>
             </li>
           </ul>
         </div>

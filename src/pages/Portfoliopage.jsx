@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Portfolio from '../components/Portfolio';
+import Footer from '../components/Footer';
 
 function Portofoliopage() {
   return (
@@ -23,6 +24,7 @@ function Portofoliopage() {
       <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16  ">
         <Portfolio />
       </div>
+      <Footer/>
     </div>
   );
 }

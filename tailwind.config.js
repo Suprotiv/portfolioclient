@@ -27,6 +27,10 @@ module.exports = {
           '0%': { opacity: '0', transform: 'translateY(-20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        fadeInLeftToRight: {
+          '0%': { opacity: '0', width: '0%' },
+          '100%': { opacity: '1', width: '100%' },
+        },
       },
       animation: {
         scroll: 'scroll 50s linear infinite',
@@ -36,8 +40,10 @@ module.exports = {
         slideDown: 'slideDown 0.5s ease-in-out',
         popIn: 'popIn 0.5s ease-in-out forwards',
         fadeInTopToBottom: 'fadeInTopToBottom 1s ease-in-out',
+        fadeInLeftToRight: 'fadeInLeftToRight 3s ease-in-out',
+        fadeInLeftToRightDelay: 'fadeInLeftToRight 3s ease-in-out', // New fade-in left-to-right with width expansion
       },
     },
   },
   plugins: [],
-}
+};

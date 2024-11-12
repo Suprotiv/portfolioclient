@@ -6,6 +6,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Portfolio from './pages/Portfoliopage';
 import ScrollToTop from './components/ScrollToTop';
+import Servicepage from './pages/Servicepage';
+import AboutPage from './pages/AboutPage';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,24 @@ const router = createBrowserRouter([
       <>
         <ScrollToTop />
         <Portfolio />
+      </>
+    ),
+  },
+  {
+    path: "/services",
+    element: (
+      <>
+        <ScrollToTop />
+        <Servicepage />
+      </>
+    ),
+  },
+  {
+    path: "/about",
+    element: (
+      <>
+        <ScrollToTop />
+        <AboutPage />
       </>
     ),
   },

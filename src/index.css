@@ -22,13 +22,31 @@ body {
   @keyframes slideInLeft {
     0% {
       opacity: 0;
-      transform: translateX(-100%) scale(0.8); /* Start from the left and slightly smaller */
+      transform: translateY(250%) scale(0.8); /* Start from the left and slightly smaller */
+    }
+    50%{
+      opacity: 0;
     }
     100% {
       opacity: 1;
-      transform: translateX(0) scale(1); /* Slide to original position and normal size */
+      transform: translateY(0) scale(1); /* Slide to original position and normal size */
     }
   }
+
+  @keyframes slideInLeft1 {
+    0% {
+      opacity: 0;
+      transform: translateY(70%) scale(0.7); /* Start from the left and slightly smaller */
+    }
+    50%{
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1); /* Slide to original position and normal size */
+    }
+  }
+  
   
   
   
@@ -51,9 +69,15 @@ body {
 
   .bl2 {
     
-    animation: slideInLeft 0.6s ease-out forwards;
+    animation: slideInLeft 0.9s ease-out forwards;
     animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    animation-range: entry 0% cover 39%;
+  }
+  .bl4 {
+    
+    animation: slideInLeft1 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 37%;
   }
 
   
