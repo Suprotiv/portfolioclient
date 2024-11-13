@@ -15,7 +15,7 @@ const VideoGrid = () => {
   ];
 
   return (
-    <div className=" py-12 bl1">
+    <div className=" pt-12 bl1">
       <div className="flex flex-col md:flex-row gap-3">
         <div className='my-2'>
           <Video video={video[1]} />

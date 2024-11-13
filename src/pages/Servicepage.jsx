@@ -25,21 +25,21 @@ const Servicepage = () => {
       title: 'Long Form Content',
       description: 'Long form editing packages designed for content creators, including thumbnails and optimized SEO for your Youtube and other video hosting platforms',
       icon: faVideo,
-      backgroundImage: '/bg.jpg',
+      backgroundImage: '/lfc.png',
       orientation: 'left'
     },
     {
       title: 'VFX',
       description: 'Special effects, green screen keying, compositing, and 3D integrations for creating powerful, cinematic visuals that captivate audiences and enhance storytelling. Whether adding realistic elements or transforming backgrounds, I bring creativity and technical precision to achieve high-impact effects to your videos',
       icon: faMagic,
-      backgroundImage: '/img1.jpg',
+      backgroundImage: '/vfx.png',
       orientation: 'right'
     },
     {
       title: 'Audio Design',
       description: 'Professional sound design, audio mixing, and syncing to enhance the storytelling experience. From clean dialogue and atmospheric effects to dynamic soundscapes, I ensure that every project sounds as polished as it looks, bringing depth and emotion to the visuals.',
       icon: faVolumeUp,
-      backgroundImage: '/thumbnail_1.png',
+      backgroundImage: '/audio.png',
       orientation: 'left'
     }
   ];

@@ -30,7 +30,7 @@ const Clients = () => {
       {/* Client images carousel */}
       <div className="flex space-x-10 md:space-x-[10vh] animate-scroll w-max hover:cursor-pointer">
         {/* First instance of client images */}
-        <div className="flex items-center space-x-10 md:space-x-[10vh]  ml-[10vh]">
+        <div className="flex items-center space-x-10 md:space-x-[10vh]  ml-[4.6vh] md:ml-[10vh]">
           {clients.map((client, index) => (
             <img
               key={`client-${index}`}

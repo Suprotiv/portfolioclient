@@ -10,7 +10,7 @@ import Clients from '../components/Clients'
 function Home() {
   return (
 
-    <div className=''>
+    <div>
       <Navbar/>
       <Main/>
       <ServicesSection/> 
