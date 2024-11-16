@@ -35,6 +35,7 @@ module.exports = {
       animation: {
         scroll: 'scroll 50s linear infinite',
         fadeIn: 'fadeIn 1s ease-in-out',
+        fadeInSlow: 'fadeIn 2s ease-in-out',
         fadeInFast: 'fadeIn 1s ease-in-out',
         fadeInMedium: 'fadeIn 0.5s ease-in-out',
         slideDown: 'slideDown 0.5s ease-in-out',

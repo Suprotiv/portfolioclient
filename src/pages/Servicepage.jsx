@@ -46,8 +46,7 @@ const Servicepage = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[80vh] animate-fadeIn">
+          <div className="relative w-full h-[50vh] md:h-[80vh] animate-fadeIn">
   {/* Background Image */}
   <img src="background.png" className="object-cover w-full h-full object-center" alt="Background" />
 
@@ -56,7 +55,7 @@ const Servicepage = () => {
     <h1 className="text-white font-bold text-4xl sm:text-5xl md:text-6xl shadow-lg shadow-black/80 p-4 rounded-md animate-fadeIn">
       Services
     </h1>
-    <div className="p-4 mt-[7vh] flex flex-col justify-center items-center">
+    <div className="p-4 md:mt-[7vh] flex flex-col justify-center items-center">
     <p className="text-gray-300  md:w-[90vh] text-md sm:text-lg md:text-xl shadow-lg text-center animate-fadeIn">
   I provide complete editing solutions from start to finish, handling everything from 
   <span className="font-bold text-[#1fd1ff]"> color correction</span> and 
@@ -87,7 +86,7 @@ const Servicepage = () => {
           ))}
         </div>
       </div>
-      <Footer/>
+     
     </>
   );
 };

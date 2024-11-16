@@ -11,12 +11,11 @@ function Home() {
   return (
 
     <div>
-      <Navbar/>
       <Main/>
       <ServicesSection/> 
       <Clients/>
       <VideoGrid/>
-     <Footer/>
+    
     </div>
   )
 }

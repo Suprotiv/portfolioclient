@@ -2,49 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Portfolio from './pages/Portfoliopage';
 import ScrollToTop from './components/ScrollToTop';
 import Servicepage from './pages/Servicepage';
 import AboutPage from './pages/AboutPage';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <>
+        <Navbar />
         <ScrollToTop />
-        <Home />
+        <Outlet />
+        <Footer/>
       </>
     ),
-  },
-  {
-    path: "/portfolio",
-    element: (
-      <>
-        <ScrollToTop />
-        <Portfolio />
-      </>
-    ),
-  },
-  {
-    path: "/services",
-    element: (
-      <>
-        <ScrollToTop />
-        <Servicepage />
-      </>
-    ),
-  },
-  {
-    path: "/about",
-    element: (
-      <>
-        <ScrollToTop />
-        <AboutPage />
-      </>
-    ),
+    children: [
+      { path: "", element: <Home /> },
+      { path: "portfolio", element: <Portfolio /> },
+      { path: "services", element: <Servicepage /> },
+      { path: "about", element: <AboutPage /> },
+    ],
   },
 ]);
 

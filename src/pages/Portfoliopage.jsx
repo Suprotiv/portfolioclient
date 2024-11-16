@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 function Portofoliopage() {
   return (
     <div>
-      <Navbar />
       
       {/* Background Image Section with Centered Text */}
       <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] animate-fadeIn">
@@ -24,7 +23,7 @@ function Portofoliopage() {
       <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16  ">
         <Portfolio />
       </div>
-      <Footer/>
+     
     </div>
   );
 }
