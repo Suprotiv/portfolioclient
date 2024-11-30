@@ -30,6 +30,24 @@ const Navbar = () => {
         });
       }
     }
+    else{
+       if (window.scrollY >= 80) {
+        setIsScrolled(true);
+        setNavbarClass({
+          backgroundColor: 'bg-black',
+          padding: 'py-1 md:py-0',
+          textColor: 'text-white',
+        });
+      } else if (window.scrollY <= 80) {
+        setIsScrolled(false);
+        setNavbarClass({
+          backgroundColor: 'bg-transparent',
+          padding: 'py-3 md:py-0',
+          textColor: 'text-white',
+        });
+      }
+
+    }
   }, [menuOpen]);
 
   const changeNavbarOnScroll = () => {
@@ -58,7 +76,7 @@ const Navbar = () => {
         if (menuOpen) {
           await setTimeout(() => {
             setMenuOpen(false);
-          }, [1]);
+          }, [100]);
         }
       }
     };
@@ -78,41 +96,48 @@ const Navbar = () => {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
         <Link to="/" onClick={() => setMenuOpen(false)}>
           <h1 className={`text-2xl relative font-semibold px-2 z-50 left-2 ${navbarClass.textColor}`}>
-            RickYz
+            Rounak
           </h1>
         </Link>
 
         <button
-          onClick={(event) => {
-            event.stopPropagation();
-            setMenuOpen((prev) => !prev);
-          }}
-          className="inline-flex items-center z-50 p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none dark:text-gray-400"
-          aria-controls="navbar-sticky"
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? (
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          ) : (
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          )}
-        </button>
+  onClick={(event) => {
+    event.stopPropagation();
+    setMenuOpen((prev) => !prev);
+  }}
+  className="inline-flex items-center z-50 p-2 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none dark:text-gray-400"
+  aria-controls="navbar-sticky"
+  aria-expanded={menuOpen}
+>
+  <div className="relative w-6 h-6">
+    {/* Close (X) Icon */}
+    <svg
+      className={`absolute top-0 left-0 w-6 h-6 transition-all duration-300 ease-in-out ${
+        menuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-45'
+      }`}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+
+    {/* Menu (Hamburger) Icon */}
+    <svg
+      className={`absolute top-0 left-0 w-6 h-6 transition-all duration-300 ease-in-out ${
+        menuOpen ? 'opacity-0 rotate-45' : 'opacity-100 rotate-0'
+      }`}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </div>
+</button>
+
 
         <div
           ref={menuRef}

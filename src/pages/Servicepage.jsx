@@ -46,7 +46,7 @@ const Servicepage = () => {
 
   return (
     <>
-          <div className="relative w-full h-[50vh] md:h-[80vh] animate-fadeIn">
+  <div className="relative w-full h-[50vh] md:h-[80vh] animate-fadeIn">
   {/* Background Image */}
   <img src="background.png" className="object-cover w-full h-full object-center" alt="Background" />
 
@@ -67,8 +67,7 @@ const Servicepage = () => {
 
     </div>
   </div>
-
-      </div>
+</div>
       <div className="text-white py-12 w-full">
       
         

@@ -33,7 +33,7 @@ module.exports = {
         },
       },
       animation: {
-        scroll: 'scroll 50s linear infinite',
+        scroll: 'scroll 20s linear infinite',
         fadeIn: 'fadeIn 1s ease-in-out',
         fadeInSlow: 'fadeIn 2s ease-in-out',
         fadeInFast: 'fadeIn 1s ease-in-out',

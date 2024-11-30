@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0d0518] text-white py-16">
+    <footer className="bg-[#0d0518] text-white pt-16 pb-8">
       <div className="max-w-screen-xl  mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between mb-12 gap-6">
           {/* Logo and Social Icons */}
@@ -68,8 +68,14 @@ const Footer = () => {
                   </button>
                 </div>
               </form>
+              
             </div>
+            
           </div>
+          
+        </div>
+        <div className="text-center">
+          <p className="text-gray-500 text-sm">© Suprotiv, {new Date().getFullYear()} | All Rights Reserved.</p>
         </div>
       </div>
     </footer>

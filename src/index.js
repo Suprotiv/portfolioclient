@@ -10,6 +10,7 @@ import Servicepage from './pages/Servicepage';
 import AboutPage from './pages/AboutPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ContactPage from './pages/ContactPage';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: "portfolio", element: <Portfolio /> },
       { path: "services", element: <Servicepage /> },
       { path: "about", element: <AboutPage /> },
+      { path: "contact", element: <ContactPage /> },
     ],
   },
 ]);

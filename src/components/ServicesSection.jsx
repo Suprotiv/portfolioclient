@@ -2,25 +2,27 @@ import React from 'react';
 import { FaBullhorn, FaVideo, FaMagic, FaVolumeUp } from 'react-icons/fa'; // New icons based on services
 import ServiceCard from './ServiceCard';
 import { useNavigate } from 'react-router-dom';
+import useScrollAnimation from './useScrollAnimation';
 
 const ServiceSection = () => {
+  useScrollAnimation()
   const navigate=useNavigate()
   return (
-    <section className="text-white py-8 md:py-8 px-8  bl4">
+    <section className="text-white py-1 pb-6 md:py-4 px-8  animate-on-scrollUp">
       <div className='flex flex-col gap-8 md:flex-row'>
-        <div className="max-w-7xl mx-auto text-center mt-[8vh]">
+        <div className="max-w-7xl mx-auto text-center md:mt-[8vh]">
           <h2 className="text-[#1fd1ff] uppercase text-lg">About Me</h2>
           <h1 className="text-4xl font-bold mt-2">What I Do?</h1>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
           If you're looking for polished, engaging content that captures attention and aligns with your brand’s vision, I’m here to bring it to life.
           </p>
-          <button onClick={()=> navigate('/services')} className="top-10 relative group text-white font-bold py-4 px-6 border-none bg-transparent tracking-wide transition-all duration-500">
+          <button onClick={()=> navigate('/services')} className="top-10 relative group mb-8 text-white font-bold py-4 px-6 border-none bg-transparent tracking-wide transition-all duration-500">
             VIEW ALL SERVICES
             {/* Animated button border effect */}
-            <span className="absolute top-0 left-0 w-5 h-0.5 bg-[#1fd1ff] transition-all duration-500 group-hover:w-full"></span>
-            <span className="absolute top-0 left-0 w-0.5 h-5 bg-[#1fd1ff] transition-all duration-500 group-hover:h-full"></span>
-            <span className="absolute bottom-0 right-0 w-5 h-0.5 bg-[#1fd1ff] transition-all duration-500 group-hover:w-full"></span>
-            <span className="absolute bottom-0 right-0 w-0.5 h-5 bg-[#1fd1ff] transition-all duration-500 group-hover:h-full"></span>
+            <span className="absolute top-0 left-0 w-full md:w-5 h-0.5 bg-[#1fd1ff] transition-all duration-500 group-hover:w-full"></span>
+            <span className="absolute top-0 left-0 w-0.5 h-full md:h-5 bg-[#1fd1ff] transition-all duration-500 group-hover:h-full"></span>
+            <span className="absolute bottom-0 right-0 w-full md:w-5 h-0.5 bg-[#1fd1ff] transition-all duration-500 group-hover:w-full"></span>
+            <span className="absolute bottom-0 right-0 w-0.5 h-full md:h-5 bg-[#1fd1ff] transition-all duration-500 group-hover:h-full"></span>
           </button>
         </div>
         
@@ -38,7 +40,7 @@ const ServiceSection = () => {
           />
         </div>
 
-        <div className=''>
+        <div className='hidden md:flex flex-col'>
           <ServiceCard
             icon={FaMagic} // VFX icon
             title="VFX"

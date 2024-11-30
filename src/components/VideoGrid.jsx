@@ -15,24 +15,31 @@ const VideoGrid = () => {
   ];
 
   return (
-    <div className=" pt-12 bl1">
-      <div className="flex flex-col md:flex-row gap-3">
-        <div className='my-2'>
+    <div className="">
+      <div className="flex flex-col md:flex-row md:gap-2">
+        {/* Left column */}
+        <div className="md:my-2 flex-1 flex flex-col gap-1">
           <Video video={video[1]} />
-          <div className="flex gap-3 my-2">
+          <div className="hidden md:flex gap-2 my-1">
             <Video video={video[2]} />
             <Video video={video[4]} />
           </div>
         </div>
-        <div>
-          <div className="flex gap-3 my-2">
+
+        {/* Middle column */}
+        <div className="flex-1">
+          <div className="flex gap-2 md:gap-2 my-1 md:mt-2">
             <Video video={video[8]} />
             <Video video={video[5]} />
           </div>
-          <Video video={video[3]} />
+          <div className="mt-3 md:my-2">
+            <Video video={video[3]} />
+          </div>
         </div>
-        <div className='my-2  md:w-[268vh]'>
-          <Video video={video[7]} />
+
+        {/* Right column */}
+        <div className="my-1 md:my-2 md:h-full flex-1 flex flex-col">
+          <Video video={video[7]} className="flex-grow" />
         </div>
       </div>
     </div>

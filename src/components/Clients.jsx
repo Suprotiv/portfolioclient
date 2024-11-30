@@ -1,70 +1,95 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { motion, animate, useMotionValue } from "framer-motion";
+import useMeasure from "react-use-measure";
+import Card from "./Cards";
 
 const Clients = () => {
-  const API_URL = 'http://localhost:4000';
+  const API_URL = "http://localhost:4000";
+  const FAST_DURATION = 25; // Fast animation duration
+  const SLOW_DURATION = 75; // Slow animation duration
+
   const [clients, setClients] = useState([]);
+  const [duration, setDuration] = useState(FAST_DURATION);
+  const [mustFinish, setMustFinish] = useState(false);
+  const [rerender, setRerender] = useState(false);
+  let [ref, { width }] = useMeasure();
 
+  const xTranslation = useMotionValue(0);
+
+  // Fetch client data
   useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get(`${API_URL}/api/portfolio/getclients`);
-      const data = response.data;
-
-      // Concatenate data twice to ensure smooth looping
-      setClients(data);
+    const fetchClients = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/api/portfolio/getclients`);
+        setClients(response.data);
+      } catch (error) {
+        console.error("Error fetching client data:", error);
+      }
     };
 
-    getData();
+    fetchClients();
   }, []);
 
+  // Scrolling animation
+  useEffect(() => {
+    let controls;
+    const finalPosition = -width / 2 - 8;
+
+    if (mustFinish) {
+      controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
+        ease: "linear",
+        duration: duration * (1 - xTranslation.get() / finalPosition),
+        onComplete: () => {
+          setMustFinish(false);
+          setRerender(!rerender);
+        },
+      });
+    } else {
+      controls = animate(xTranslation, [0, finalPosition], {
+        ease: "linear",
+        duration: duration,
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 0,
+      });
+    }
+
+    return controls?.stop;
+  }, [rerender, xTranslation, duration, width]);
+
+  if (clients.length === 0) {
+    return <div>Loading clients...</div>;
+  }
+
   return (
-    <div className='flex  justify-center items-center bl1'>
-       
-    <div className="relative py-4 w-full overflow-hidden my-[5vh]">
-        <div className='flex justify-center items-center mb-[10vh] '>
-    <h1 className='text-white font-bold text-4xl '>Clients</h1>
-    </div>
-      {/* Overlay with gradient from sides */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-[#000021] via-transparent to-[#000021]"></div>
-      
-      {/* Client images carousel */}
-      <div className="flex space-x-10 md:space-x-[10vh] animate-scroll w-max hover:cursor-pointer">
-        {/* First instance of client images */}
-        <div className="flex items-center space-x-10 md:space-x-[10vh]  ml-[4.6vh] md:ml-[10vh]">
-          {clients.map((client, index) => (
-            <img
-              key={`client-${index}`}
-              src={client.image}
-              alt={`Client ${index + 1}`}
-              className="h-[17vh] md:h-[22vh] opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-3xl"
-            />
-          ))}
-        </div>
-        {/* Duplicate instance of client images */}
-        <div className="flex items-center space-x-10 md:space-x-[10vh]">
-          {clients.map((client, index) => (
-            <img
-              key={`client-duplicate-${index}`}
-              src={client.image}
-              alt={`Client ${index + 1}`}
-              className="h-[17vh] md:h-[22vh] opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-3xl"
-            />
-          ))}
-        </div>
-        
+    <div className="relative py-8 h-[50vh] mt-10 overflow-x-hidden flex justify-center items-center ">
+      {/* Title */}
+      <div className="absolute top-0 flex justify-center items-center ">
+        <h1 className="text-white font-bold text-4xl">Clients</h1>
       </div>
 
-      {/* Tailwind custom animation */}
-      <style jsx>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll {
-          animation: scroll 20s linear infinite;
-        }
-      `}</style>
-    </div>
+      {/* Carousel */}
+      <motion.div
+        className="absolute left-0 flex gap-12"
+        style={{ x: xTranslation }}
+        ref={ref}
+        onHoverStart={() => {
+          setMustFinish(true);
+          setDuration(SLOW_DURATION);
+        }}
+        onHoverEnd={() => {
+          setMustFinish(true);
+          setDuration(FAST_DURATION);
+        }}
+      >
+        {[...clients, ...clients].map((item, idx) => (
+          <Card image={`${item.image}`} name={item.name} key={idx} />
+        ))}
+      </motion.div>
+
+      {/* Overlay gradient */}
+      <div className="absolute inset-0 z-10 h-[50vh] w-screen pointer-events-none bg-gradient-to-r from-[#000021] via-transparent to-[#000021]" />
     </div>
   );
 };

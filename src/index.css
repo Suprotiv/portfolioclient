@@ -4,80 +4,69 @@
 @tailwind utilities;
 
 body {
-    background-color: rgb(0, 0, 33);
-    font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
-  }
+  background-color: rgb(0, 0, 33);
+  font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  @keyframes appear {
-    0% {
-      opacity: 0;
-      transform: scale(0.75); /* Start slightly smaller */
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1); /* End at normal size */
-    }
-  }
-  @keyframes slideInLeft {
-    0% {
-      opacity: 0;
-      transform: translateY(250%) scale(0.8); /* Start from the left and slightly smaller */
-    }
-    50%{
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1); /* Slide to original position and normal size */
-    }
-  }
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateX(-20px); /* Slide in from the left */
+  transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+  /* Match the delay in .bl3 */
+}
 
-  @keyframes slideInLeft1 {
-    0% {
-      opacity: 0;
-      transform: translateY(70%) scale(0.7); /* Start from the left and slightly smaller */
-    }
-    50%{
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1); /* Slide to original position and normal size */
-    }
-  }
-  
-  
-  
-  
+/* When the element is in view, apply the "animate" class */
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateX(0); /* Slide back to the original position */
+}
 
-  .bl1 {
-    
-    animation: appear 0.6s ease-out forwards;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-  }
+.animate-on-scroll1 {
+  opacity: 0;
+  transform: translateX(20px); /* Slide in from the left */
+  transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+  /* Match the delay in .bl3 */
+}
 
-  .bl3 {
-    
-    animation: appear 0.6s ease-out forwards;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-    animation-delay: 1s;
-  }
+/* When the element is in view, apply the "animate" class */
+.animate-on-scroll1.animate {
+  opacity: 1;
+  transform: translateX(0); /* Slide back to the original position */
+}
 
+.animate-on-scrollUp {
+  opacity: 0;
+  transform: translateY(20px) scale(0.97); /* Combine translateX and scale in transform */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Apply both transitions together */
+}
 
-  .bl2 {
-    
-    animation: slideInLeft 0.9s ease-out forwards;
-    animation-timeline: view();
-    animation-range: entry 0% cover 39%;
-  }
-  .bl4 {
-    
-    animation: slideInLeft1 1s ease-out forwards;
-    animation-timeline: view();
-    animation-range: entry 0% cover 37%;
-  }
+.animate-on-scrollUp.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1); /* Reset both translateX and scale */
+}
 
-  
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@-webkit-keyframes slide {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-animation {
+  animation: slide 25s linear infinite;
+  -webkit-animation: slide 25s linear infinite; /* Webkit-specific animation */
+  will-change: transform;
+}
