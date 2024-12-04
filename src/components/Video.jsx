@@ -26,6 +26,9 @@ function Video({ video }) {
           src={video.imageUrl}
           alt={video.alt}
           className="object-cover w-full h-auto transition-all duration-300 group-hover:scale-110"
+          width="300"
+          height="auto"
+          loading="lazy"
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
           <svg
@@ -48,19 +51,19 @@ function Video({ video }) {
       {/* Modal for playing the video */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4 sm:p-8">
-          <div className="relative w-full max-w-lg sm:max-w-xl lg:max-w-4xl p-4 sm:p-6 bg-black rounded-lg">
-            {/* Close button positioned in the corner of the screen */}
+          <div
+            className="relative w-full max-w-lg sm:max-w-xl lg:max-w-4xl p-4 sm:p-6 bg-black rounded-lg"
+            style={{ width: '90%', maxWidth: '800px' }}
+          >
             <button
               onClick={handleCloseModal}
               className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition"
             >
               <FontAwesomeIcon icon={faTimes} size="lg" />
             </button>
-
-            {/* Responsive Video iframe */}
             <iframe
               className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-lg"
-              src={video.videoUrl}
+              src={isModalOpen ? video.videoUrl : ""}
               title={video.alt}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -74,3 +77,5 @@ function Video({ video }) {
 }
 
 export default Video;
+
+
