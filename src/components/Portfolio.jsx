@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Portfolio = () => {
-  const API_URL = 'http://localhost:4000';
+  const API_URL = 'http://46.202.164.225:4000';
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [portfolioItems, setPortfolioItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);

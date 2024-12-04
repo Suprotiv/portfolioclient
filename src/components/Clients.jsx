@@ -5,7 +5,7 @@ import useMeasure from "react-use-measure";
 import Card from "./Cards";
 
 const Clients = () => {
-  const API_URL = "http://localhost:4000";
+  const API_URL = 'http://46.202.164.225:4000';
   const FAST_DURATION = 25; // Fast animation duration
   const SLOW_DURATION = 75; // Slow animation duration
 
