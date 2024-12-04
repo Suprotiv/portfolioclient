@@ -3,7 +3,7 @@ import useScrollAnimation from "../components/useScrollAnimation";
 
 const AboutPage = () => {
   useScrollAnimation();
-  const editorImage = "dp.jpg"; // Replace with your actual image URL
+  const editorImage = "dp.jpeg"; // Replace with your actual image URL
   const backgroundImage = "about5.jpeg"; // Replace with your actual background image URL
 
   return (
