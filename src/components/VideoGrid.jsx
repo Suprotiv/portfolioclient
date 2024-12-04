@@ -8,7 +8,7 @@ const VideoGrid = () => {
     { id: 3, imageUrl: 'thumbnail_3.png', alt: 'Video 3', orientation: 'landscape', videoUrl: 'https://www.youtube.com/embed/video3' },
     { id: 4, imageUrl: 'thumbnail_4.png', alt: 'Video 4', orientation: 'portrait', videoUrl: 'https://www.youtube.com/embed/video4' },
     { id: 5, imageUrl: 'thumbnail_5.png', alt: 'Video 5', orientation: 'landscape', videoUrl: 'https://www.youtube.com/embed/video5' },
-    { id: 6, imageUrl: 'thumbnail_6.jpeg', alt: 'Video 6', orientation: 'portrait', videoUrl: 'https://www.youtube.com/embed/video6' },
+    { id: 6, imageUrl: 'thumbnail_6.png', alt: 'Video 6', orientation: 'portrait', videoUrl: 'https://www.youtube.com/embed/video6' },
     { id: 7, imageUrl: 'thumbnail_7.png', alt: 'Video 7', orientation: 'portrait', videoUrl: 'https://www.youtube.com/embed/video7' },
     { id: 8, imageUrl: 'thumbnail_8_Re.jpg', alt: 'Video 8', orientation: 'portrait', videoUrl: 'https://www.youtube.com/embed/video8' },
     { id: 9, imageUrl: 'thumbnail_9.png', alt: 'Video 9', orientation: 'portrait', videoUrl: 'https://www.youtube.com/embed/video9' },
