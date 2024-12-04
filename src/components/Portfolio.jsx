@@ -17,8 +17,13 @@ const Portfolio = () => {
 
   useEffect(() => {
     const getData = async () => {
+      try{
       const response = await axios.get(`${API_URL}/api/portfolio/getprojects`);
       setPortfolioItems(response.data);
+      }
+      catch(err){
+        console.log(err)
+      }
     };
     getData();
   }, []);

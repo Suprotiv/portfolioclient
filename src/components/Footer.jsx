@@ -8,12 +8,12 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between mb-12 gap-6">
           {/* Logo and Social Icons */}
           <div className="flex flex-col mr-10">
-            <div className="text-2xl font-bold mb-4">VIDEOGRAPH</div>
+            <div className="text-2xl font-bold mb-4">Rounak</div>
             <div className="flex space-x-4 mb-8">
-              <a href="#" className="text-gray-400 hover:text-white"><FaFacebookF /></a>
-              <a href="#" className="text-gray-400 hover:text-white"><FaTwitter /></a>
-              <a href="#" className="text-gray-400 hover:text-white"><FaInstagram /></a>
-              <a href="#" className="text-gray-400 hover:text-white"><FaYoutube /></a>
+              <a className="text-gray-400 hover:text-white"><FaFacebookF /></a>
+              <a className="text-gray-400 hover:text-white"><FaTwitter /></a>
+              <a className="text-gray-400 hover:text-white"><FaInstagram /></a>
+              <a className="text-gray-400 hover:text-white"><FaYoutube /></a>
             </div>
           </div>
 

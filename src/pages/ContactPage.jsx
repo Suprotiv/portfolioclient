@@ -8,6 +8,7 @@ const ContactPage = () => {
     phone: "",
     message: "",
   });
+  const backgroundImage = "SFC.png";
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -80,8 +81,15 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <div className="w-full max-w-3xl px-6 py-12 bg-gray-800 rounded-lg shadow-lg my-20 animate-fadeIn">
+    <div
+    className="min-h-screen text-white py-20 bg-cover bg-center bg-no-repeat relative animate-fadeIn"
+    style={{
+      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 33,1), rgba(0, 0, 0, 0.2)), url(${backgroundImage})`,
+      backgroundAttachment: "fixed", // Ensures the background is fixed
+    }}
+  >
+      <div className="flex justify-center items-center">
+      <div className="w-full max-w-3xl px-6 py-12 bg-gray-900 rounded-lg shadow-lg my-5 animate-fadeIn ">
         <h1 className="text-3xl font-bold text-center mb-8">Contact Me</h1>
         <p className="text-center text-gray-400 mb-6">
           Have a project in mind? Feel free to reach out.
@@ -189,6 +197,7 @@ const ContactPage = () => {
           </form>
         )}
       </div>
+    </div>
     </div>
   );
 };
