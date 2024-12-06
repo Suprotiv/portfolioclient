@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useInView } from 'react-intersection-observer';
 
 function Video({ video }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  const { ref, inView } = useInView({
-    triggerOnce: true, // Load image only once when it enters the viewport
-    threshold: 0.1, // Trigger when at least 10% of the image is visible
-  });
 
   const handleThumbnailClick = () => {
     setIsModalOpen(true);
@@ -28,21 +21,15 @@ function Video({ video }) {
           video.orientation === 'landscape' ? 'aspect-w-16 aspect-h-9' : 'aspect-w-9 aspect-h-16'
         }`}
         onClick={handleThumbnailClick}
-        ref={ref}
       >
-        {inView && (
-          <img
-            src={video.imageUrl}
-            alt={video.alt}
-            className={`object-cover w-full h-auto transition-all duration-300 group-hover:scale-110 ${
-              isImageLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            width="300"
-            height="auto"
-            loading="lazy"
-            onLoad={() => setIsImageLoaded(true)}
-          />
-        )}
+        <img
+          src={video.imageUrl}
+          alt={video.alt}
+          className="object-cover w-full h-auto transition-all duration-300 group-hover:scale-110"
+          width="300"
+          height="auto"
+          loading="lazy"
+        />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +63,7 @@ function Video({ video }) {
             </button>
             <iframe
               className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-lg"
-              src={isModalOpen ? video.videoUrl : ''}
+              src={isModalOpen ? video.videoUrl : ""}
               title={video.alt}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -90,3 +77,5 @@ function Video({ video }) {
 }
 
 export default Video;
+
+
