@@ -4,7 +4,7 @@ import useScrollAnimation from "../components/useScrollAnimation";
 const AboutPage = () => {
   useScrollAnimation();
   const editorImage = "dp.webp"; // Replace with your actual image URL
-  const backgroundImage = "about5.webp"; // Replace with your actual background image URL
+  const backgroundImage = "about5_1.webp"; // Replace with your actual background image URL
 
   return (
     <div
