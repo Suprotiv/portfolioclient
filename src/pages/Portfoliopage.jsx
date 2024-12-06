@@ -9,7 +9,7 @@ function Portofoliopage() {
       
       {/* Background Image Section with Centered Text */}
       <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] animate-fadeIn">
-        <img src="background.png" className="object-cover w-full h-full object-center" alt="Background" />
+        <img src="background.webp" className="object-cover w-full h-full object-center" alt="Background" />
         
         {/* Centered Portfolio Text */}
         <div className="absolute inset-0 flex justify-center items-center">
