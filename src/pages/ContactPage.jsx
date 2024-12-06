@@ -8,7 +8,7 @@ const ContactPage = () => {
     phone: "",
     message: "",
   });
-  const backgroundImage = "SFC.png";
+  const backgroundImage = "SFC.webp";
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
