@@ -21,7 +21,7 @@ function Portofoliopage() {
       
       {/* Portfolio Component Below Image */}
       <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16  ">
-        {/* <Portfolio /> */}
+        <Portfolio />
       </div>
      
     </div>

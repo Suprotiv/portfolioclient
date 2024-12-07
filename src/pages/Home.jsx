@@ -14,7 +14,7 @@ function Home() {
     <div>
       <Main />
       <ServicesSection />
-      {/* <Clients /> */}
+      <Clients />
       <VideoGrid />
     </div>
   );
