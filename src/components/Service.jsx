@@ -18,6 +18,7 @@ const Service = ({ title, description, icon, backgroundImage, orientation }) => 
           src={backgroundImage} 
           alt={`${title} image`}
           className="rounded-lg object-cover h-[50vh]  w-full"
+          loading="lazy"
         />
       </div>
       

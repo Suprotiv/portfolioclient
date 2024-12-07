@@ -48,7 +48,7 @@ const Servicepage = () => {
     <>
   <div className="relative w-full h-[50vh] md:h-[80vh] animate-fadeIn">
   {/* Background Image */}
-  <img src="background.webp" className="object-cover w-full h-full object-center" alt="Background" />
+  <img src="background.webp" className="object-cover w-full h-full object-center" alt="Background" loading="lazy" />
 
   {/* Centered Text */}
   <div className="absolute inset-0 flex flex-col justify-center items-center p-4 bg-black bg-opacity-40">
