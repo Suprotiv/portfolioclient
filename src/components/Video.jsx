@@ -15,20 +15,23 @@ function Video({ video }) {
 
   return (
     <>
-      <div
-        key={video.id}
-        className={`relative group overflow-hidden inline-block cursor-pointer ${
-          video.orientation === 'landscape' ? 'aspect-w-16 aspect-h-9' : 'aspect-w-9 aspect-h-16'
-        }`}
-        onClick={handleThumbnailClick}
-      >
+     <div
+  key={video.id}
+  className={`relative group overflow-hidden inline-block cursor-pointer ${
+    video.orientation === 'landscape'
+      ? 'aspect-w-16 aspect-h-9 w-[470px] h-[264px]'
+      : video.orientation === 'portrait'
+      ? 'aspect-w-9 aspect-h-16 w-[230px] h-[409px]'
+      : 'aspect-w-9 aspect-h-16 w-[460px] h-[680px]'
+  }`}
+  onClick={handleThumbnailClick}
+>
         <img
           src={video.imageUrl}
           alt={video.alt}
-          className="object-cover w-full h-auto transition-all duration-300 group-hover:scale-110"
-          width="300"
-          height="auto"
+          className="object-cover transition-all duration-300 group-hover:scale-110"
           loading="lazy"
+          style={{ width: '100%', height: '100%' }} // Ensure the image covers the container dimensions
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
           <svg
@@ -77,5 +80,3 @@ function Video({ video }) {
 }
 
 export default Video;
-
-
