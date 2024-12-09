@@ -25,7 +25,7 @@ const AboutPage = () => {
         {/* Editor Image */}
         <div className="flex justify-center mb-8">
           <img
-            src="dp.webp" // Replace with your actual image URL
+            src="dp.png" // Replace with your actual image URL
             alt="Video Editor"
             className="w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg"
             loading="lazy"
