@@ -8,6 +8,19 @@ body {
   font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.blur-load {
+  background-size: cover;
+  background-position: center;
+}
+.blur-load.loaded > img {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.blur-load > img {
+  opacity: 0;
+}
+
 .animate-on-scroll {
   opacity: 0;
   transform: translateX(-20px); /* Slide in from the left */

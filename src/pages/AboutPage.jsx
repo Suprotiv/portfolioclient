@@ -1,32 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useScrollAnimation from "../components/useScrollAnimation";
+
 
 const AboutPage = () => {
   useScrollAnimation();
-  const editorImage = "dp.webp"; // Replace with your actual image URL
   const backgroundImage = "about5_1.webp"; // Replace with your actual background image URL
 
+
   return (
-    <div className="relative min-h-screen text-white py-20 animate-fadeIn">
-      {/* Background Image */}
-      <img
-        src={backgroundImage}
-        alt="Background"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ backgroundAttachment: "fixed" }} 
-        loading="lazy"// Optional: Apply fixed background effect
-      />
+    <div
+      className="relative min-h-screen text-white py-20 animate-fadeIn"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
       {/* Gradient Overlay */}
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-[#000021] to-black opacity-60 z-10"
-      ></div>
-      
+      <div className="absolute inset-0 bg-gradient-to-b from-[#000021] to-black opacity-60 z-10"></div>
+
       {/* Content */}
       <section className="relative z-20 container mx-auto px-4 md:px-20 py-20 bg-black bg-opacity-60 rounded-lg shadow-lg">
         {/* Editor Image */}
         <div className="flex justify-center mb-8">
           <img
-            src={editorImage}
+            src="dp.webp" // Replace with your actual image URL
             alt="Video Editor"
             className="w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg"
             loading="lazy"
@@ -79,7 +78,7 @@ const AboutPage = () => {
       </section>
 
       {/* Notable Clients Section */}
-      <section className="py-10 bg-black bg-opacity-60 rounded-lg shadow-lg my-10  md:mx-20 relative z-20">
+      <section className="py-10 bg-black bg-opacity-60 rounded-lg shadow-lg my-10 md:mx-20 relative z-20">
         <div className="container mx-auto px-6 md:px-20 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 pb-10 text-[#1fd1ff]">
             Notable Clients
