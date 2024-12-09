@@ -19,10 +19,10 @@ function Video({ video }) {
   key={video.id}
   className={`relative group overflow-hidden inline-block cursor-pointer ${
     video.orientation === 'landscape'
-      ? 'aspect-w-16 aspect-h-9'
+      ? 'aspect-w-16 aspect-h-9 md:max-w-[470px] md:max-h-[264px]'
       : video.orientation === 'portrait'
-      ? 'aspect-w-9 aspect-h-16'
-      : 'aspect-w-9 aspect-h-16'
+      ? 'aspect-w-9 aspect-h-16  md:max-w-[230px] md:max-h-[409px]'
+      : 'aspect-w-9 aspect-h-16 md:max-w-[470px] md:max-h-[680px]'
   }`}
   onClick={handleThumbnailClick}
 >
