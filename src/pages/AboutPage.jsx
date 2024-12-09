@@ -7,7 +7,7 @@ const AboutPage = () => {
   const backgroundImage = "about5_1.webp"; // Replace with your actual background image URL
 
   return (
-    <div className="relative min-h-screen text-white py-20 animate-fadeIn">
+    <div className="relative min-h-screen text-white py-20">
       {/* Background Image */}
       <img
         src={backgroundImage}
