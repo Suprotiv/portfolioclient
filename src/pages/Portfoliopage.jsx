@@ -13,9 +13,9 @@ function Portofoliopage() {
       <div className='blur-load' style={{
         backgroundImage: `url(/background_lowres.jpg)`,
       }}>
-      <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh]">
+      <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] animate-fadeIn">
       
-        <img src="background.webp" className="object-cover w-full h-full object-center" alt="Background"/>
+        <img src="background.webp" className="object-cover w-full h-full object-center" alt="Background" loading='lazy'/>
         
         
         {/* Centered Portfolio Text */}
