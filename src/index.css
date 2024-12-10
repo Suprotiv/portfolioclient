@@ -15,11 +15,13 @@ body {
   height: auto;
 }
 .blur-load.loaded > img {
+  filter: blur(0);
   opacity: 1;
   transition: opacity 300ms ease-in-out;
 }
 
 .blur-load > img {
+  filter: blur(10px);
   opacity: 0;
 }
 
