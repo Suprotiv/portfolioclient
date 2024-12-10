@@ -18,8 +18,10 @@ const VideoGrid = () => {
     <div className="">
       <div className="flex flex-col md:flex-row md:gap-2">
         {/* Left column */}
-        <div className="md:my-2 flex-1 flex flex-col gap-1">
+        <div className="md:mb-2 flex-1 flex flex-col gap-1">
+          <div className='mt-2'>
           <Video video={video[1]} />
+          </div>
           <div className="hidden md:flex gap-2 my-1">
             <Video video={video[2]} />
             <Video video={video[4]} />

@@ -11,6 +11,8 @@ body {
 .blur-load {
   background-size: cover;
   background-position: center;
+  width: 100%;
+  height: auto;
 }
 .blur-load.loaded > img {
   opacity: 1;

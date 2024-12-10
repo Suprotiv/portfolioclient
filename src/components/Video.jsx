@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import LazyLoader from './LazyLoader';
 
 function Video({ video }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,39 +16,73 @@ function Video({ video }) {
 
   return (
     <>
-     <div
-  key={video.id}
-  className={`relative group overflow-hidden inline-block cursor-pointer ${
-    video.orientation === 'landscape'
-      ? 'aspect-w-16 aspect-h-9 md:max-w-[470px] md:max-h-[264px]'
-      : video.orientation === 'portrait'
-      ? 'aspect-w-9 aspect-h-16  md:max-w-[230px] md:max-h-[409px]'
-      : 'aspect-w-9 aspect-h-16 md:max-w-[470px] md:max-h-[680px]'
-  }`}
-  onClick={handleThumbnailClick}
->
-        <img
-          src={video.imageUrl}
-          alt={video.alt}
-          className="object-cover transition-all duration-300 group-hover:scale-110"
-          loading="lazy"
-          style={{ width: '100%', height: '100%' }} // Ensure the image covers the container dimensions
-        />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-10 w-10 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M14.752 11.168l-6.446 3.675a1 1 0 01-1.506-.864V9.02a1 1 0 011.506-.864l6.446 3.675a1 1 0 010 1.728z"
-            />
-          </svg>
+      {/* LazyLoader initializes on the page */}
+      <LazyLoader />
+
+      <div
+        className="blur-load"
+        style={{
+          backgroundImage: `url(lowres/${video.imageUrl.slice(0, -5)}_lowres.jpg)`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          aspectRatio:
+            video.orientation === 'landscape'
+              ? '16 / 9'
+              : video.orientation === 'portrait'
+              ? '9 / 16'
+              : '47 / 68',
+          maxHeight:
+            video.orientation === 'landscape'
+              ? '264px'
+              : video.orientation === 'portrait'
+              ? '409px'
+              : '680px',
+          maxWidth:
+            video.orientation === 'landscape'
+              ? '470px'
+              : video.orientation === 'portrait'
+              ? '230px'
+              : '470px',
+          height: '100%', // Ensures the container takes the full height
+        }}
+      >
+        <div
+          key={video.id}
+          className={`relative group overflow-hidden inline-block cursor-pointer inner-div ${
+            video.orientation === 'landscape'
+              ? 'aspect-w-16 aspect-h-9 md:max-w-[470px] md:max-h-[264px]'
+              : video.orientation === 'portrait'
+              ? 'aspect-w-9 aspect-h-16 md:max-w-[230px] md:max-h-[409px]'
+              : 'aspect-w-9 aspect-h-16 md:max-w-[470px] md:max-h-[680px]'
+          }`}
+          onClick={handleThumbnailClick}
+        >
+          {/* Thumbnail Image */}
+          <img
+            src={video.imageUrl}
+            alt={video.alt}
+            className="relative z-10  object-cover transition-all duration-300 group-hover:scale-110 w-full h-full"
+            loading="lazy"
+          />
+
+          {/* Overlay for Play Icon */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 z-20">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-10 w-10 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M14.752 11.168l-6.446 3.675a1 1 0 01-1.506-.864V9.02a1 1 0 011.506-.864l6.446 3.675a1 1 0 010 1.728z"
+              />
+            </svg>
+          </div>
         </div>
       </div>
 
@@ -66,7 +101,7 @@ function Video({ video }) {
             </button>
             <iframe
               className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-lg"
-              src={isModalOpen ? video.videoUrl : ""}
+              src={isModalOpen ? video.videoUrl : ''}
               title={video.alt}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
