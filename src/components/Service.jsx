@@ -22,7 +22,7 @@ const Service = ({ title, description, icon, backgroundImage, orientation }) => 
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: '100%',
+    height: '55vh',
     width: '100%', // Default width for smaller screens
     borderRadius: '10px',
     zIndex: '0',
@@ -32,13 +32,13 @@ const Service = ({ title, description, icon, backgroundImage, orientation }) => 
 >
   {/* Image */}
   <div 
-    className="w-full  inner-div flex-shrink-0 mb-6 md:mb-0 " // Image is positioned above
+    className="w-full h-full  inner-div flex-shrink-0 mb-6 md:mb-0 " // Image is positioned above
   >
     
     <img 
       src={backgroundImage} 
       alt={`${title} image`}
-      className="rounded-lg object-cover h-[55vh] w-full relative "
+      className="rounded-lg  object-cover h-full w-full relative "
       loading="lazy"
     />
   </div>
