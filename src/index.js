@@ -11,6 +11,7 @@ import AboutPage from './pages/AboutPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ContactPage from './pages/ContactPage';
+import AdminPage from './pages/AdminPage';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: "services", element: <Servicepage /> },
       { path: "about", element: <AboutPage /> },
       { path: "contact", element: <ContactPage /> },
+      { path: "admin", element: <AdminPage /> },
     ],
   },
 ]);
