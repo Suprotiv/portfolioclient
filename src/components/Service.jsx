@@ -9,30 +9,36 @@ const Service = ({ title, description, icon, backgroundImage, orientation }) => 
   return (
     <div className='overflow-hidden'>
       <LazyLoader/>
+      
     <div 
       className={`flex flex-col md:flex-row gap-10    items-center px-6 py-12 rounded-lg  text-white  ${
         orientation === 'right' ? 'md:flex-row-reverse animate-on-scroll1 ' : 'animate-on-scroll'
       }`}
     >
-  <div 
-  className="blur-load relative rounded-md" // Ensure the container is relative
+  <div
+  className="blur-load"
   style={{
     backgroundImage: `url(lowres/${backgroundImage.slice(0, -5)}_lowres.jpg)`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    width: '50%', // Ensures the container takes the full height
-    height: '100%', // Sets the background beneath
+    height: '100%',
+    width: '100%', // Default width for smaller screens
+    borderRadius: '10px',
+    zIndex: '0',
+    // Media query for screens larger than md (768px)
+    ...(window.innerWidth >= 768 && { width: '55%' }),
   }}
 >
   {/* Image */}
   <div 
-    className="w-full  flex-shrink-0 mb-6 md:mb-0 relative z-10" // Image is positioned above
+    className="w-full  inner-div flex-shrink-0 mb-6 md:mb-0 " // Image is positioned above
   >
+    
     <img 
       src={backgroundImage} 
       alt={`${title} image`}
-      className="rounded-lg object-cover h-[55vh] w-full"
+      className="rounded-lg object-cover h-[55vh] w-full relative "
       loading="lazy"
     />
   </div>

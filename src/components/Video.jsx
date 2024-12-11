@@ -18,7 +18,6 @@ function Video({ video }) {
     <>
       {/* LazyLoader initializes on the page */}
       <LazyLoader />
-
       <div
         className="blur-load"
         style={{
@@ -47,7 +46,7 @@ function Video({ video }) {
           height: '100%', // Ensures the container takes the full height
         }}
       >
-        <div
+       <div
           key={video.id}
           className={`relative group overflow-hidden inline-block cursor-pointer inner-div ${
             video.orientation === 'landscape'

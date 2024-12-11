@@ -9,13 +9,13 @@ const LazyLoader = () => {
         if (!img) return; // Skip if img doesn't exist
 
         function loaded() {
-          div.classList.add('loaded');
+          div.classList.add('loaded'); // Add the loaded class to make the image visible
         }
 
         if (img.complete) {
-          loaded();
+          loaded(); // If the image is already loaded, call the loaded function
         } else {
-          img.addEventListener('load', loaded);
+          img.addEventListener('load', loaded); // Add event listener for the load event
         }
       });
     };
