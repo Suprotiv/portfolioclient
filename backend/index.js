@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path=require('path')
 const router=express.Router() // Import the cors package
 const mongoose = require('mongoose');
 const portfolioroutes = require('./routes/portfolioroutes');
@@ -10,7 +11,7 @@ require('dotenv').config();
 const PORT = process.env.PORT ; 
 
 app.use('/api/portfolio', portfolioroutes);
-
+app.use('/clients', express.static(path.join(__dirname, 'routes/clients')));
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
