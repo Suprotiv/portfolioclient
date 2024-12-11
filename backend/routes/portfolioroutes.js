@@ -34,7 +34,7 @@ router.get('/getprojects', async (req,res)=>{
     res.json(projects)
 
 })
-router.get('/getclients', async (req,res)=>{
+router.get('/getclient', async (req,res)=>{
     
     const projects= await ClientModel.find({})
 
