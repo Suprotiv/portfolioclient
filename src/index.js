@@ -11,7 +11,6 @@ import AboutPage from './pages/AboutPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ContactPage from './pages/ContactPage';
-import AdminPage from './pages/AdminPage';
 
 const router = createBrowserRouter([
   {
