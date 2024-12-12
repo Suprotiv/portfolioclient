@@ -4,7 +4,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 const Footer = () => {
   return (
     <footer className="bg-[#0d0518] text-white pt-16 pb-8">
-      <div className="max-w-screen-xl  mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-xl  mx-auto px-4 sm:px-6 lg:px-1">
         <div className="flex flex-col md:flex-row justify-between mb-12 gap-6">
           {/* Logo and Social Icons */}
           <div className="flex flex-col mr-10">
@@ -22,8 +22,9 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold mb-4">About us</h3>
               <p className="text-gray-400">
-                Formed in 2006 by Matt Hobbs and Cael Jones, Videograph is an award-winning,
-                full-service production company specializing.
+              I am Rounak, a professional video editor and photographer from India
+            with over 4 years of experience crafting visually compelling
+            content
               </p>
               <a href="#" className="text-blue-400 mt-4 block">Read more →</a>
             </div>
@@ -52,7 +53,8 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold mb-4">Newsletter</h3>
               <p className="text-gray-400 mb-4">
-                Videograph is an award-winning, full-service production company specializing.
+              Specializing in social media content for platforms like Instagram,
+            YouTube, and TikTok.
               </p>
               <form>
                 <div className="relative">
