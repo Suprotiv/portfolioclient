@@ -9,7 +9,11 @@ const Clients = () => {
   const FAST_DURATION = 25; // Fast animation duration
   const SLOW_DURATION = 75; // Slow animation duration
 
-  const [clients, setClients] = useState([]);
+  const placeholderClients = Array(9).fill({
+    name: "Loading...",
+    image: "lowres/thumbnail_1_lowres.jpg", // Replace with a placeholder image URL
+  });
+  const [clients, setClients] = useState(placeholderClients);
   const [duration, setDuration] = useState(FAST_DURATION);
   const [mustFinish, setMustFinish] = useState(false);
   const [rerender, setRerender] = useState(false);
