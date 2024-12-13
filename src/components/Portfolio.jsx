@@ -71,14 +71,22 @@ const Portfolio = () => {
         {displayedItems.map((item) => (
           <div
             key={item.id}
-            className="relative group overflow-hidden rounded-lg animate-popIn transition-all duration-300 hover:cursor-pointer"
+            className="relative blur-load group overflow-hidden rounded-lg animate-popIn transition-all duration-300 hover:cursor-pointer"
             onClick={() => handleThumbnailClick(item.video)}
+            style={{
+              backgroundImage: `url(http://api.rounak.co/clients/${item.image.split('/').pop().split('.').slice(0, -1).join('.')}_lowres.jpg)`,
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+            }}
           >
+            <div className='h-full w-full inner-div'>
             <img
               src={item.image}
               alt={item.title}
               className="w-full h-[40vh] sm:h-[40vh] md:h-[35vh] lg:h-[30vh] object-cover transition-transform duration-300 group-hover:scale-110"
             />
+            </div>
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="text-center px-4">
                 <h2 className="text-lg font-semibold">{item.title}</h2>
