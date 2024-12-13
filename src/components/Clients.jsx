@@ -13,7 +13,7 @@ const Clients = () => {
     .fill(null)
     .map((_, index) => ({
       name: "Loading...",
-      image: `lowres/thumbnail_${index + 1}_lowres.jpg`, // Generate unique image names
+      image: `/`, // Generate unique image names
     }));
 
   const [clients, setClients] = useState(placeholderClients);
