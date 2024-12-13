@@ -36,7 +36,7 @@ const Card = ({ image , name }) => {
       <img
         src={image}
         alt={image}
-        className="absolute h-full w-full object-cover"
+        className="absolute h-full w-full object-cover animate-fadeIn"
       />
     </motion.div>
   );
