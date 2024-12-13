@@ -10,7 +10,7 @@ const Card = ({ image , name }) => {
       key={image}
       onHoverStart={() => setShowOverlay(true)}
       onHoverEnd={() => setShowOverlay(false)}
-      style={{  backgroundImage: `url(new.avif)`,
+      style={{  backgroundImage: `url(blur.jpg)`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
