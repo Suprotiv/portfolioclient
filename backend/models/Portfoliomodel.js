@@ -17,6 +17,10 @@ const PortfolioItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  orientation: {
+    type: String,
+    required: true
+  },
   type: {
     type: String,
     required: true, // restricts type to these values
