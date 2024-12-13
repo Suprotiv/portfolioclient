@@ -10,7 +10,7 @@ const Card = ({ image , name }) => {
       key={image}
       onHoverStart={() => setShowOverlay(true)}
       onHoverEnd={() => setShowOverlay(false)}
-      style={{  backgroundImage: `url(lowres/blurred_lowres.jpg)`,
+      style={{  backgroundImage: `url(new.avif)`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
@@ -42,7 +42,7 @@ const Card = ({ image , name }) => {
       <img
         src={image}
         alt={image}
-        className="absolute h-full w-full object-cover animate-fadeIn"
+        className="absolute h-full w-full object-cover"
       />
       </div>
     </motion.div>

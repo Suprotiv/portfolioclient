@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
+const { exec } = require('child_process'); 
 const ClientModel = require('../models/ClientModel'); 
 const Portfoliomodel = require('../models/Portfoliomodel');// Adjust the path to your model
 
@@ -70,35 +71,54 @@ router.post('/addclient', upload.single('file'), async (req, res) => {
     }
   });
 
-router.post('/addproject', upload.single('file'), async (req, res) => {
+  // Import child_process for executing shell commands
+
+  router.post('/addproject', upload.single('file'), async (req, res) => {
     try {
-      const { title,category,type ,video , orientation } = req.body; // Extract client name from request body
+      const { title, category, type, video, orientation } = req.body;
   
       if (!req.file) {
         return res.status(400).json({ message: 'Image file is required.' });
       }
   
       // Generate the URL for the uploaded image
-      const image = `${req.protocol}://${req.get('host')}/clients/${req.file.originalname}`;
+      const originalImage = `${req.protocol}://${req.get('host')}/clients/${req.file.originalname}`;
+      const lowResImageName = req.file.originalname.replace(/\.[^/.]+$/, '_lowres.jpg'); // Append '_lowres' to file name
+      const lowResImagePath = `${req.file.destination}/${lowResImageName}`; // Path for low-res image
   
-      // Create a new client entry
-      const newClient = new Portfoliomodel({
-        title,
-        category,
-        type ,
-        video , 
-        orientation,
-        image
-      });
+      // Run ffmpeg to create a low-resolution image
+      exec(
+        `ffmpeg -i ${req.file.path} -vf scale=20:-1 ${lowResImagePath}`,
+        async (error, stdout, stderr) => {
+          if (error) {
+            console.error('Error generating low-resolution image:', error);
+            return res.status(500).json({ message: 'Error processing image.' });
+          }
   
-      // Save the client to the database
-      await newClient.save();
+          // Create a new portfolio entry
+          const newPortfolio = new Portfoliomodel({
+            title,
+            category,
+            type,
+            video,
+            orientation,
+            image: originalImage, // Save the low-resolution image URL
+          });
   
-      res.status(201).json({ message: 'Portfolio added successfully.', client: newClient });
+          // Save the portfolio entry to the database
+          await newPortfolio.save();
+  
+          res.status(201).json({
+            message: 'Portfolio added successfully.',
+            portfolio: newPortfolio,
+          });
+        }
+      );
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Error adding portfolio item.', error });
     }
   });
+  
 
 module.exports = router;
