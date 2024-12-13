@@ -10,13 +10,14 @@ const Clients = () => {
   const SLOW_DURATION = 75; // Slow animation duration
 
   const placeholderClients = Array(9)
-  .fill(null)
-  .map((_, index) => ({
-    name: "Loading...",
-    image: `lowres/thumbnail_${index + 1}_lowres.jpg`, // Generate unique image names
-  }));
+    .fill(null)
+    .map((_, index) => ({
+      name: "Loading...",
+      image: `lowres/thumbnail_${index + 1}_lowres.jpg`, // Generate unique image names
+    }));
 
   const [clients, setClients] = useState(placeholderClients);
+  const [loaded, setLoaded] = useState(false); // Track if the API data has loaded
   const [duration, setDuration] = useState(FAST_DURATION);
   const [mustFinish, setMustFinish] = useState(false);
   const [rerender, setRerender] = useState(false);
@@ -30,6 +31,7 @@ const Clients = () => {
       try {
         const response = await axios.get(`${API_URL}/api/portfolio/getclients`);
         setClients(response.data);
+        setLoaded(true); // Set loaded to true once data is fetched
       } catch (error) {
         console.error("Error fetching client data:", error);
       }
@@ -91,7 +93,14 @@ const Clients = () => {
         }}
       >
         {[...clients, ...clients].map((item, idx) => (
-          <Card image={`${item.image}`} name={item.name} key={idx} />
+          <motion.div
+            key={idx}
+            initial={{ opacity: loaded ? 0 : 1 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }} // Adjust duration for fade-in
+          >
+            <Card image={`${item.image}`} name={item.name} />
+          </motion.div>
         ))}
       </motion.div>
 
