@@ -88,7 +88,7 @@ router.post('/addclient', upload.single('file'), async (req, res) => {
   
       // Run ffmpeg to create a low-resolution image
       exec(
-        `ffmpeg -i ${req.file.path} -vf scale=20:-1 ${lowResImagePath}`,
+        `ffmpeg -i ${req.file.originalname} -vf scale=20:-1 ${lowResImageName}`,
         async (error, stdout, stderr) => {
           if (error) {
             console.error('Error generating low-resolution image:', error);
