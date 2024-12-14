@@ -13,7 +13,6 @@ function Video({ video }) {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  console.log(video.orientation)
   return (
     <>
       {/* LazyLoader initializes on the page */}
@@ -105,7 +104,7 @@ function Video({ video }) {
             </button>
             <iframe
               className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-lg"
-              src={isModalOpen ? video.videoUrl : ''}
+              src={isModalOpen ? video.video : ''}
               title={video.alt}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

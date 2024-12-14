@@ -42,12 +42,14 @@ router.get('/getprojectsBanner', async (req, res) => {
       // Fetch 2 random landscape projects
       Portfoliomodel.aggregate([
         { $match: { orientation: 'Landscape' } },
-        { $sample: { size: 2 } }
+        { $sample: { size: 2 } },
+        { $sort: { _id: 1 } }
       ]),
       // Fetch 5 random portrait projects, excluding those with type: "caption"
       Portfoliomodel.aggregate([
         { $match: { orientation: 'Portrait', type: { $ne: 'Caption' } } },
-        { $sample: { size: 5 } }
+        { $sample: { size: 5 } },
+        { $sort: { _id: 1 } }
       ])
     ]);
 
