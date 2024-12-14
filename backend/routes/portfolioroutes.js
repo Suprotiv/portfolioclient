@@ -41,12 +41,12 @@ router.get('/getprojectsBanner', async (req, res) => {
     const [landscapeProjects, portraitProjects] = await Promise.all([
       // Fetch 2 random landscape projects
       Portfoliomodel.aggregate([
-        { $match: { orientation: 'landscape' } },
+        { $match: { orientation: 'Landscape' } },
         { $sample: { size: 2 } }
       ]),
       // Fetch 5 random portrait projects
       Portfoliomodel.aggregate([
-        { $match: { orientation: 'portrait' } },
+        { $match: { orientation: 'Portrait' } },
         { $sample: { size: 5 } }
       ])
     ]);
