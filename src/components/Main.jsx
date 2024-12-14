@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Buttons from './Buttons';
 import { useNavigate } from 'react-router-dom';
 
 function Main() {
   const navigate=useNavigate();
+  useEffect(() => {
+    const videoElement = document.querySelector('video');
+    if (videoElement) {
+      videoElement.muted = true; // Ensure the video is muted for autoplay to work
+    }
+  }, []);
   return (
     <div className="relative top-0 left-0 w-full h-screen text-white overflow-hidden">
       <div className="w-full h-full relative">
@@ -39,6 +45,7 @@ function Main() {
           autoPlay
           loop
           muted
+          playsInline
         />
       </div>
     </div>
