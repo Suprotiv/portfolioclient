@@ -41,7 +41,7 @@ const Portfolio = () => {
     return () => clearTimeout(timer);
   }, [selectedCategory, portfolioItems]);
 
-  const categories = ['All', 'Anime', 'Catalogue', 'Advertisements', 'Caption', 'SMC'];
+  const categories = ['All', 'SMC','Catalogue', 'Advertisements', 'Caption','Anime'];
 
   const filteredItems =
     selectedCategory === 'All'
@@ -73,15 +73,20 @@ const Portfolio = () => {
         <>
           <div className="flex w-full overflow-x-auto space-x-2 mb-8 md:space-x-8 md:mb-12 animate-fadeIn scrollbar-hide">
             <div className="flex flex-nowrap justify-center space-x-2 md:space-x-5 mx-auto">
-              {categories.map((category) => (
-                <div
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className="mb-4 md:mb-0"
-                >
-                  <Buttons text={category} size="sm" isSelected={selectedCategory === category} />
-                </div>
-              ))}
+            {categories.map((category) => (
+  <div
+    key={category}
+    onClick={() => setSelectedCategory(category)}
+    className="mb-4 md:mb-0"
+  >
+    <Buttons
+      text={category === 'SMC' ? 'Social Media' : category} // Change text if category is 'smc'
+      size="sm"
+      isSelected={selectedCategory === category}
+    />
+  </div>
+))}
+
             </div>
           </div>
 
