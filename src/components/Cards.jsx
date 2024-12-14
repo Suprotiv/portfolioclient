@@ -35,7 +35,7 @@ const Card = ({ image , name }) => {
         )}
       </AnimatePresence>
       <div className="h-full w-full blur-load"
-      style={{  backgroundImage: `url(lowres/blurred_lowres.jpg)`,
+      style={{  backgroundImage: `url(blur.jpg)`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
