@@ -12,6 +12,7 @@ const Portfolio = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [tempImages,setTempImages]=useState([]);
 
   const itemsPerPage = 6;
 
@@ -26,11 +27,17 @@ const Portfolio = () => {
       }
     };
     getData();
+   
   }, []);
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedCategory]);
+    setTempImages([]); // Clear temporary images
+    const timer = setTimeout(() => {
+      setTempImages(filteredItems.slice(0, itemsPerPage));
+    }, 1); // Add delay for smooth transition
+    return () => clearTimeout(timer);
+  }, [selectedCategory,portfolioItems]);
 
   const categories = ['All', 'Anime', 'Catalogue', 'Advertisements', 'Caption', 'SMC'];
 
@@ -45,6 +52,7 @@ const Portfolio = () => {
     setCurrentVideo(videoUrl);
     setIsModalOpen(true);
   };
+  console.log(tempImages)
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -53,8 +61,9 @@ const Portfolio = () => {
 
   const handleLoadMore = () => {
     setCurrentPage(prevPage => prevPage + 1);
+    
+    setTempImages(filteredItems.slice(0,(currentPage+1)*itemsPerPage));
   };
-
   return (
     <div className="text-white pb-12 px-4 md:px-12 w-full lg:px-16">
       <div className="flex w-full overflow-x-auto space-x-2 mb-8 md:space-x-8 md:mb-12 animate-fadeIn scrollbar-hide">
@@ -68,7 +77,7 @@ const Portfolio = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-10 animate-fadeIn transition-all duration-300">
-        {displayedItems.map((item) => (
+        {tempImages.map((item) => (
           <div
             key={item.id}
             className="relative blur-load group overflow-hidden rounded-lg animate-popIn transition-all duration-300 hover:cursor-pointer"
@@ -99,7 +108,7 @@ const Portfolio = () => {
       </div>
 
       {/* Load more button */}
-      {displayedItems.length < filteredItems.length && (
+      {tempImages.length < filteredItems.length && (
         <div className="flex justify-center mt-8 animate-fadeIn">
           <button onClick={handleLoadMore} className="relative group text-white font-bold py-2 px-3 border-none bg-transparent tracking-wide transition-all duration-500">
             Load More
