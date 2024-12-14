@@ -37,7 +37,7 @@ const Portfolio = () => {
     setTempImages([]); // Clear temporary images
     const timer = setTimeout(() => {
       setTempImages(filteredItems.slice(0, itemsPerPage));
-    }, 1); // Add delay for smooth transition
+    }, 10); // Add delay for smooth transition
     return () => clearTimeout(timer);
   }, [selectedCategory, portfolioItems]);
 
