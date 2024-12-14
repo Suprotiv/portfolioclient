@@ -44,9 +44,9 @@ router.get('/getprojectsBanner', async (req, res) => {
         { $match: { orientation: 'Landscape' } },
         { $sample: { size: 2 } }
       ]),
-      // Fetch 5 random portrait projects
+      // Fetch 5 random portrait projects, excluding those with type: "caption"
       Portfoliomodel.aggregate([
-        { $match: { orientation: 'Portrait' } },
+        { $match: { orientation: 'Portrait', type: { $ne: 'caption' } } },
         { $sample: { size: 5 } }
       ])
     ]);
@@ -67,6 +67,7 @@ router.get('/getprojectsBanner', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch projects' });
   }
 });
+
 
 
 router.get('/getclients', async (req,res)=>{
