@@ -34,7 +34,36 @@ router.get('/getprojects', async (req,res)=>{
 
     res.json(projects)
 
-})
+}) // Adjust the path as needed
+
+router.get('/getprojectsBanner', async (req, res) => {
+  try {
+    const [landscapeProjects, portraitProjects] = await Promise.all([
+      // Fetch 2 random landscape projects
+      Portfoliomodel.aggregate([
+        { $match: { orientation: 'landscape' } },
+        { $sample: { size: 2 } }
+      ]),
+      // Fetch 5 random portrait projects
+      Portfoliomodel.aggregate([
+        { $match: { orientation: 'portrait' } },
+        { $sample: { size: 5 } }
+      ])
+    ]);
+
+    const projects = {
+      landscape: landscapeProjects,
+      portrait: portraitProjects,
+    };
+
+    res.json(projects);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch projects' });
+  }
+});
+
+
 router.get('/getclients', async (req,res)=>{
     
     const projects= await ClientModel.find({})
