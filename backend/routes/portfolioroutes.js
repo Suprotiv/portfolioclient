@@ -46,7 +46,7 @@ router.get('/getprojectsBanner', async (req, res) => {
       ]),
       // Fetch 5 random portrait projects, excluding those with type: "caption"
       Portfoliomodel.aggregate([
-        { $match: { orientation: 'Portrait', type: { $ne: 'caption' } } },
+        { $match: { orientation: 'Portrait', type: { $ne: 'Caption' } } },
         { $sample: { size: 5 } }
       ])
     ]);
