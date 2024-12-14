@@ -6,15 +6,11 @@ const Card = ({ image , name }) => {
 
   return (
     <motion.div
-      className="relative blur-load overflow-hidden h-[140px] min-w-[140px] md:h-[170px] md:min-w-[170px] rounded-xl flex justify-center items-center hover:cursor-pointer"
+      className="relative  overflow-hidden h-[140px] min-w-[140px] md:h-[170px] md:min-w-[170px] rounded-xl flex justify-center items-center hover:cursor-pointer"
       key={image}
       onHoverStart={() => setShowOverlay(true)}
       onHoverEnd={() => setShowOverlay(false)}
-      style={{  backgroundImage: `url(blur.jpg)`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-    }}
+      
     >
       {/* Hover overlay */}
       <AnimatePresence>
@@ -38,12 +34,21 @@ const Card = ({ image , name }) => {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="h-full w-full inner-div">
+      <div className="h-full w-full blur-load"
+      style={{  backgroundImage: `url(lowres/blurred_lowres.jpg)`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      height:'100%',
+      width:'100%'
+    }}>
+      <div className="h-full w-full relative inner-div">
       <img
         src={image}
         alt={image}
-        className="absolute h-full w-full object-cover"
+        className="absolute h-full w-full object-cover z-10"
       />
+      </div>
       </div>
     </motion.div>
   );
