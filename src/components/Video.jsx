@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import LazyLoader from './LazyLoader';
@@ -13,7 +13,7 @@ function Video({ video }) {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
+  console.log(video.orientation)
   return (
     <>
       {/* LazyLoader initializes on the page */}
@@ -21,26 +21,31 @@ function Video({ video }) {
       <div
         className="blur-load"
         style={{
-          backgroundImage: `url(lowres/${video.imageUrl.slice(0, -5)}_lowres.jpg)`,
+          backgroundImage: `url(http://api.rounak.co/clients/${video.image
+          .split('/')
+          .pop()
+          .split('.')
+          .slice(0, -1)
+          .join('.')}_lowres.jpg)`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
           aspectRatio:
-            video.orientation === 'landscape'
+            video.orientation === 'Landscape'
               ? '16 / 9'
-              : video.orientation === 'portrait'
+              : video.orientation === 'Portrait'
               ? '9 / 16'
               : '47 / 68',
           maxHeight:
-            video.orientation === 'landscape'
+            video.orientation === 'Landscape'
               ? '264px'
-              : video.orientation === 'portrait'
+              : video.orientation === 'Portrait'
               ? '409px'
               : '680px',
           maxWidth:
-            video.orientation === 'landscape'
+            video.orientation === 'Landscape'
               ? '470px'
-              : video.orientation === 'portrait'
+              : video.orientation === 'Portrait'
               ? '230px'
               : '470px',
           height: '100%', // Ensures the container takes the full height
@@ -49,9 +54,9 @@ function Video({ video }) {
        <div
           key={video.id}
           className={`relative group overflow-hidden inline-block cursor-pointer inner-div ${
-            video.orientation === 'landscape'
+            video.orientation === 'Landscape'
               ? 'aspect-w-16 aspect-h-9 md:max-w-[470px] md:max-h-[264px]'
-              : video.orientation === 'portrait'
+              : video.orientation === 'Portrait'
               ? 'aspect-w-9 aspect-h-16 md:max-w-[230px] md:max-h-[409px]'
               : 'aspect-[47/68] md:max-w-[470px] md:max-h-[680px]'
           }`}
@@ -59,7 +64,7 @@ function Video({ video }) {
         >
           {/* Thumbnail Image */}
           <img
-            src={video.imageUrl}
+            src={video.image}
             alt={video.alt}
             className="relative z-10  object-cover transition-all duration-300 group-hover:scale-110 w-full h-full"
             loading="lazy"

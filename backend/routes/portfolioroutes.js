@@ -51,6 +51,11 @@ router.get('/getprojectsBanner', async (req, res) => {
       ])
     ]);
 
+    // Update the orientation of the last portrait project to 'special'
+    if (portraitProjects.length > 0) {
+      portraitProjects[portraitProjects.length - 1].orientation = 'special';
+    }
+
     const projects = {
       landscape: landscapeProjects,
       portrait: portraitProjects,
