@@ -41,23 +41,18 @@ function Video({ video }) {
               : video.orientation === 'Portrait'
               ? '409px'
               : '680px',
-          maxWidth:
-            video.orientation === 'Landscape'
-              ? '470px'
-              : video.orientation === 'Portrait'
-              ? '230px'
-              : '470px',
+         
           height: '100%', // Ensures the container takes the full height
         }}
       >
        <div
           key={video.id}
-          className={`relative group overflow-hidden inline-block cursor-pointer inner-div ${
+          className={`relative group overflow-hidden inline-block cursor-pointer w-full h-full inner-div ${
             video.orientation === 'Landscape'
-              ? 'aspect-w-16 aspect-h-9 md:max-w-[470px] md:max-h-[264px]'
+              ? 'aspect-w-16 aspect-h-9  md:max-h-[264px]'
               : video.orientation === 'Portrait'
-              ? 'aspect-w-9 aspect-h-16 md:max-w-[230px] md:max-h-[409px]'
-              : 'aspect-[47/68] md:max-w-[470px] md:max-h-[680px]'
+              ? 'aspect-w-9 aspect-h-16  md:max-h-[409px]'
+              : 'aspect-[47/68]  md:max-h-[680px]'
           }`}
           onClick={handleThumbnailClick}
         >
