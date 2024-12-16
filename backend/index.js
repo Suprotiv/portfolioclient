@@ -7,6 +7,7 @@ const portfolioroutes = require('./routes/portfolioroutes');
 const app = express();
 app.use(cors());
 require('dotenv').config();
+const jwt = require('jsonwebtoken');
 const SECRET_KEY =process.env.SECRET_KEY 
 
 const PORT = process.env.PORT ; 
