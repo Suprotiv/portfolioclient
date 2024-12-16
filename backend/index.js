@@ -7,6 +7,7 @@ const portfolioroutes = require('./routes/portfolioroutes');
 const app = express();
 app.use(cors());
 require('dotenv').config();
+const SECRET_KEY =process.env.SECRET_KEY 
 
 const PORT = process.env.PORT ; 
 app.use(express.json());
@@ -22,8 +23,8 @@ app.post('/login', async (req, res) => {
     // Compare the user's credentials (dummy check here)
     if (username === 'testUser' && password === 'password123') {
       // Generate a JWT token
-      // Token expires in 1 hour
-      res.json({ message:'successful' });
+      const token = jwt.sign(user, SECRET_KEY, { expiresIn: '1h' }); // Token expires in 1 hour
+      res.json({ token });
     } else {
       res.status(401).json({ message: 'Invalid username or password.' });
     }
