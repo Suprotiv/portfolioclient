@@ -41,11 +41,11 @@ const VideoGrid = () => {
   
           {/* Middle column */}
           <div className="flex-1">
-            <div className="flex gap-2 md:gap-2 my-1 md:mt-2">
+            <div className="flex gap-1 md:gap-2 my-1 md:mt-2">
               {video.portrait[2] && <Video video={video.portrait[2]} key={video.portrait[2]._id}/>}
               {video.portrait[3] && <Video video={video.portrait[3]} key={video.portrait[3]._id}/>}
             </div>
-            <div className="mt-3 md:my-2">
+            <div className="mt-1 md:my-2">
               {video.landscape[1] && <Video video={video.landscape[1]} key={video.landscape[1]._id} />}
             </div>
           </div>

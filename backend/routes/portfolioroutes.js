@@ -4,7 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process'); 
 const ClientModel = require('../models/ClientModel'); 
-const Portfoliomodel = require('../models/Portfoliomodel');// Adjust the path to your model
+const Portfoliomodel = require('../models/Portfoliomodel');
+const jwt = require('jsonwebtoken');
+
+const SECRET_KEY =process.env.SECRET_KEY ; ;// Adjust the path to your model
 
 const router = express.Router();
 
@@ -79,81 +82,112 @@ router.get('/getclients', async (req,res)=>{
 })
 
 // POST request to add a new client
-router.post('/addclient', upload.single('file'), async (req, res) => {
-    try {
-      const { name } = req.body; // Extract client name from request body
-  
-      if (!req.file) {
-        return res.status(400).json({ message: 'Image file is required.' });
-      }
-  
-      // Generate the URL for the uploaded image
-      const image = `${req.protocol}://${req.get('host')}/clients/${req.file.originalname}`;
-  
-      // Create a new client entry
-      const newClient = new ClientModel({
-        name,
-        image
-      });
-  
-      // Save the client to the database
-      await newClient.save();
-  
-      res.status(201).json({ message: 'Client added successfully.', client: newClient });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Error adding client.', error });
+ // Replace with a secure secret key
+
+// Middleware to verify JWT
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]; // Get the token from "Bearer <token>"
+
+  if (!token) {
+    return res.status(401).json({ message: 'Access denied. No token provided.' });
+  }
+
+  // Verify the token
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: 'Invalid token.' });
     }
+
+    req.user = user; // Attach user information to the request object
+    next();
   });
+};
+// Protect the /addclient route
+router.post('/addclient', authenticateToken, upload.single('file'), async (req, res) => {
+  try {
+    const { name } = req.body;
 
-  // Import child_process for executing shell commands
+    if (!req.file) {
+      return res.status(400).json({ message: 'Image file is required.' });
+    }
 
-  router.post('/addproject', upload.single('file'), async (req, res) => {
-    try {
-      const { title, category, type, video, orientation } = req.body;
-  
-      if (!req.file) {
-        return res.status(400).json({ message: 'Image file is required.' });
-      }
-  
-      // Generate the URL for the uploaded image
-      const originalImage = `${req.protocol}://${req.get('host')}/clients/${req.file.originalname}`;
-      const lowResImageName = req.file.originalname.replace(/\.[^/.]+$/, '_lowres.jpg'); // Append '_lowres' to file name
-      const lowResImagePath = `${req.file.destination}/${lowResImageName}`; // Path for low-res image
-  
-      // Run ffmpeg to create a low-resolution image
-      exec(
-        `ffmpeg -i ${req.file.path} -vf scale=20:-1 ${lowResImagePath}`,
-        async (error, stdout, stderr) => {
-          if (error) {
-            console.error('Error generating low-resolution image:', error);
-            return res.status(500).json({ message: 'Error processing image.' });
-          }
-  
-          // Create a new portfolio entry
-          const newPortfolio = new Portfoliomodel({
-            title,
-            category,
-            type,
-            video,
-            orientation,
-            image: originalImage, // Save the low-resolution image URL
-          });
-  
-          // Save the portfolio entry to the database
-          await newPortfolio.save();
-  
-          res.status(201).json({
-            message: 'Portfolio added successfully.',
-            portfolio: newPortfolio,
-          });
+    const image = `${req.protocol}://${req.get('host')}/clients/${req.file.originalname}`;
+
+    const newClient = new ClientModel({
+      name,
+      image,
+    });
+
+    await newClient.save();
+
+    res.status(201).json({ message: 'Client added successfully.', client: newClient });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error adding client.', error });
+  }
+});
+
+// Protect the /addproject route
+router.post('/addproject', authenticateToken, upload.single('file'), async (req, res) => {
+  try {
+    const { title, category, type, video, orientation } = req.body;
+
+    if (!req.file) {
+      return res.status(400).json({ message: 'Image file is required.' });
+    }
+
+    const originalImage = `${req.protocol}://${req.get('host')}/clients/${req.file.originalname}`;
+    const lowResImageName = req.file.originalname.replace(/\.[^/.]+$/, '_lowres.jpg');
+    const lowResImagePath = `${req.file.destination}/${lowResImageName}`;
+
+    exec(
+      `ffmpeg -i ${req.file.path} -vf scale=20:-1 ${lowResImagePath}`,
+      async (error, stdout, stderr) => {
+        if (error) {
+          console.error('Error generating low-resolution image:', error);
+          return res.status(500).json({ message: 'Error processing image.' });
         }
-      );
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Error adding portfolio item.', error });
-    }
-  });
-  
+
+        const newPortfolio = new Portfoliomodel({
+          title,
+          category,
+          type,
+          video,
+          orientation,
+          image: originalImage,
+        });
+
+        await newPortfolio.save();
+
+        res.status(201).json({
+          message: 'Portfolio added successfully.',
+          portfolio: newPortfolio,
+        });
+      }
+    );
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error adding portfolio item.', error });
+  }
+});
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  // Dummy user authentication logic (replace this with your actual logic)
+  const user = { id: 1, username: 'testUser' }; // Example user object
+
+  // Compare the user's credentials (dummy check here)
+  if (username === 'testUser' && password === 'password123') {
+    // Generate a JWT token
+    const token = jwt.sign(user, SECRET_KEY, { expiresIn: '1h' }); // Token expires in 1 hour
+    res.json({ token });
+  } else {
+    res.status(401).json({ message: 'Invalid username or password.' });
+  }
+});
+
+
+
 
 module.exports = router;

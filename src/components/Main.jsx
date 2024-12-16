@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Buttons from './Buttons';
 import { useNavigate } from 'react-router-dom';
 
 function Main() {
@@ -19,7 +18,7 @@ function Main() {
         {/* Text container */}
         <div className="z-20 absolute top-[28vh] md:top-[32vh] w-[90%] md:w-[80%] lg:w-[60%] xl:w-[50%] mx-[5%] md:mx-[10%] lg:mx-[20%]  animate-fadeInSlow">
           <h1 className="text-gray-300 text-sm md:text-md lg:text-lg">
-            For website and video editing
+            Crafting content that captivates
           </h1>
         <h1 className="text-white text-4xl lg:text-5xl my-2 font-bold ">
   Rounak Chowdhury's
