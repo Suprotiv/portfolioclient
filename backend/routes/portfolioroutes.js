@@ -228,7 +228,17 @@ router.delete('/deleteproject/:id', authenticateToken, async (req, res) => {
         console.error('Error deleting image file:', err);
         return res.status(500).json({ message: 'Error deleting project image.' });
       }
+      fs.unlink(lowResImageName, (err) => {
+        if (err) {
+          console.error('Error deleting image file:', err);
+          return res.status(500).json({ message: 'Error deleting project image.' });
+        }
+      });
+
     });
+
+    
+
 
     // Delete the project from the database
     await Portfoliomodel.findByIdAndDelete(id);
