@@ -171,7 +171,21 @@ router.post('/addproject', authenticateToken, upload.single('file'), async (req,
     res.status(500).json({ message: 'Error adding portfolio item.', error });
   }
 });
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
 
+  // Dummy user authentication logic (replace this with your actual logic)
+  const user = { id: 1, username: 'testUser' }; // Example user object
+
+  // Compare the user's credentials (dummy check here)
+  if (username === 'testUser' && password === 'password123') {
+    // Generate a JWT token
+    const token = jwt.sign(user, SECRET_KEY, { expiresIn: '1h' }); // Token expires in 1 hour
+    res.json({ token });
+  } else {
+    res.status(401).json({ message: 'Invalid username or password.' });
+  }
+});
 
 
 
