@@ -86,8 +86,7 @@ router.get('/getclients', async (req,res)=>{
 
 // Middleware to verify JWT
 const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Get the token from "Bearer <token>"
+  const token = req.headers.authorization?.split(' ')[1]; // Get the token from "Bearer <token>"
 
   if (!token) {
     return res.status(401).json({ message: 'Access denied. No token provided.' });
@@ -98,7 +97,6 @@ const authenticateToken = (req, res, next) => {
     if (err) {
       return res.status(403).json({ message: 'Invalid token.' });
     }
-
     req.user = user; // Attach user information to the request object
     next();
   });
