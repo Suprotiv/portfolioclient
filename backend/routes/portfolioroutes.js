@@ -7,6 +7,8 @@ const ClientModel = require('../models/ClientModel');
 const Portfoliomodel = require('../models/Portfoliomodel');
 const jwt = require('jsonwebtoken');
 
+require('dotenv').config();
+
 const SECRET_KEY =process.env.SECRET_KEY ; ;// Adjust the path to your model
 
 const router = express.Router();
