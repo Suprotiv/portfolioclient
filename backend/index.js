@@ -13,7 +13,7 @@ app.use(express.json());
 app.use('/api/portfolio', portfolioroutes);
 app.use('/clients', express.static(path.join(__dirname, 'routes/clients')));
 
-router.post('/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     const { username, password } = req.body;
   
     // Dummy user authentication logic (replace this with your actual logic)
