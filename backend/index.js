@@ -9,7 +9,7 @@ app.use(cors());
 require('dotenv').config();
 
 const PORT = process.env.PORT ; 
-
+app.use(express.json());
 app.use('/api/portfolio', portfolioroutes);
 app.use('/clients', express.static(path.join(__dirname, 'routes/clients')));
 
