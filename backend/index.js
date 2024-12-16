@@ -13,6 +13,21 @@ app.use(express.json());
 app.use('/api/portfolio', portfolioroutes);
 app.use('/clients', express.static(path.join(__dirname, 'routes/clients')));
 
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+  
+    // Dummy user authentication logic (replace this with your actual logic)
+    const user = { id: 1, username: 'testUser' }; // Example user object
+  
+    // Compare the user's credentials (dummy check here)
+    if (username === 'testUser' && password === 'password123') {
+      // Generate a JWT token
+      const token = jwt.sign(user, SECRET_KEY, { expiresIn: '1h' }); // Token expires in 1 hour
+      res.json({ token });
+    } else {
+      res.status(401).json({ message: 'Invalid username or password.' });
+    }
+  });
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))

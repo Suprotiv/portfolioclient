@@ -6,6 +6,7 @@ const { exec } = require('child_process');
 const ClientModel = require('../models/ClientModel'); 
 const Portfoliomodel = require('../models/Portfoliomodel');
 const jwt = require('jsonwebtoken');
+
 const SECRET_KEY =process.env.SECRET_KEY ; ;// Adjust the path to your model
 
 const router = express.Router();
@@ -170,14 +171,7 @@ router.post('/addproject', authenticateToken, upload.single('file'), async (req,
     res.status(500).json({ message: 'Error adding portfolio item.', error });
   }
 });
-router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
 
-  // Dummy user authentication logic (replace this with your actual logic)
-  const user = { id: 1, username: 'testUser' }; // Example user object
-
-  res.json({user})
-});
 
 
 
