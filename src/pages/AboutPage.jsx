@@ -92,14 +92,7 @@ const AboutPage = () => {
             <span>WomenlikeU</span>
             <span>Vastharam Silk</span>
             <span>Ethnic.co</span>
-            <a
-              href="https://www.youtube.com/@trash-gang"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#1fd1ff] underline hover:text-white"
-            >
-              Trash
-            </a>
+            <span>Trash</span>
           </div>
         </div>
       </section>
