@@ -175,5 +175,73 @@ router.post('/addproject', authenticateToken, upload.single('file'), async (req,
 
 
 
+// Delete Client
+router.delete('/deleteclient/:id', authenticateToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find the client by ID
+    const client = await ClientModel.findById(id);
+    if (!client) {
+      return res.status(404).json({ message: 'Client not found.' });
+    }
+
+    // Extract the image path
+    const imagePath = path.join(__dirname, '/clients', path.basename(client.image.split('/').pop()));
+
+    // Delete the image file
+    fs.unlink(imagePath, (err) => {
+      if (err) {
+        console.error('Error deleting image file:', err);
+        return res.status(500).json({ message: 'Error deleting client image.' });
+      }
+    });
+
+    // Delete the client from the database
+    await ClientModel.findByIdAndDelete(id);
+
+    res.status(200).json({ message: 'Client deleted successfully.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error deleting client.', error });
+  }
+});
+
+// Delete Project
+router.delete('/deleteproject/:id', authenticateToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find the project by ID
+    const project = await Portfoliomodel.findById(id);
+    if (!project) {
+      return res.status(404).json({ message: 'Project not found.' });
+    }
+
+    // Extract the image path
+    const imagePath = path.join(__dirname, '/clients', path.basename(project.image.split('/').pop()));
+
+    // Delete the image file
+    fs.unlink(imagePath, (err) => {
+      if (err) {
+        console.error('Error deleting image file:', err);
+        return res.status(500).json({ message: 'Error deleting project image.' });
+      }
+    });
+
+    // Delete the project from the database
+    await Portfoliomodel.findByIdAndDelete(id);
+
+    res.status(200).json({ message: 'Project deleted successfully.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error deleting project.', error });
+  }
+});
+
+
+
+
+
 
 module.exports = router;
