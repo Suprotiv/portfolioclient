@@ -220,6 +220,7 @@ router.delete('/deleteproject/:id', authenticateToken, async (req, res) => {
 
     // Extract the image path
     const imagePath = path.join(__dirname, '/clients', path.basename(project.image.split('/').pop()));
+    const lowResImageName = path.join(__dirname, '/clients', path.basename(project.image.split('/').pop().replace(/\.[^/.]+$/, '_lowres.jpg')));
 
     // Delete the image file
     fs.unlink(imagePath, (err) => {
