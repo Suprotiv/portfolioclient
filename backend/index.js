@@ -22,9 +22,10 @@ app.post('/login', async (req, res) => {
     const user = { id: 1, username: 'testUser' }; // Example user object
   
     // Compare the user's credentials (dummy check here)
-    if (username === 'testUser' && password === 'password123') {
+    if (username === process.env.USERNAME && password === process.env.PASSWORD) {
       // Generate a JWT token
-      const token = jwt.sign(user, SECRET_KEY, { expiresIn: '1h' }); // Token expires in 1 hour
+      const token = jwt.sign(user, SECRET_KEY, { expiresIn: '30m' });
+      // Token expires in 30 min
       res.json({ token });
     } else {
       res.status(401).json({ message: 'Invalid username or password.' });
