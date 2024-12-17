@@ -2,8 +2,6 @@
 import React from 'react';
 import { faFilm, faBullhorn, faVideo, faMagic, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import Service from '../components/Service';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 const Servicepage = () => {
   const services = [
@@ -11,7 +9,7 @@ const Servicepage = () => {
       title: 'Short Form Content',
       description: 'Engaging short form reels, shorts, and video content optimized for platforms like Instagram, Youtube and TikTok that will help you grow your page as I utilize video editing strategies focused on maximizing viewer retention and engagement',
       icon: faFilm,
-      backgroundImage: '/thumbnail_2.webp',
+      backgroundImage: '/SFC.jpg',
       orientation: 'left' // Image on the left
     },
     {
@@ -25,7 +23,7 @@ const Servicepage = () => {
       title: 'Long Form Content',
       description: 'Long form editing packages designed for content creators, including thumbnails and optimized SEO for your Youtube and other video hosting platforms',
       icon: faVideo,
-      backgroundImage: '/lfc.webp',
+      backgroundImage: '/LFC_1.jpg',
       orientation: 'left'
     },
     {
@@ -39,7 +37,7 @@ const Servicepage = () => {
       title: 'Audio Design',
       description: 'Professional sound design, audio mixing, and syncing to enhance the storytelling experience. From clean dialogue and atmospheric effects to dynamic soundscapes, I ensure that every project sounds as polished as it looks, bringing depth and emotion to the visuals.',
       icon: faVolumeUp,
-      backgroundImage: '/audio.webp',
+      backgroundImage: '/Audio.jpg',
       orientation: 'left'
     }
   ];
@@ -48,7 +46,7 @@ const Servicepage = () => {
     <>
   <div className="relative w-full h-[50vh] md:h-[80vh] animate-fadeIn">
   {/* Background Image */}
-  <img src="background.webp" className="object-cover w-full h-full object-center" alt="Background" loading="lazy" />
+  <img src="services.jpg" className="object-cover w-full h-full object-center opacity-55" alt="Background" loading="lazy" />
 
   {/* Centered Text */}
   <div className="absolute inset-0 flex flex-col justify-center items-center p-4 bg-black bg-opacity-40">

@@ -42,7 +42,7 @@ const Footer = () => {
 
         {/* Navigation Links */}
         <div className="flex justify-center space-x-8 mb-6">
-          <Link to="/home" className="hover:text-[#1fd1ff] transition-all duration-300">
+          <Link to="/" className="hover:text-[#1fd1ff] transition-all duration-300">
             Home
           </Link>
           <Link to="/portfolio" className="hover:text-[#1fd1ff] transition-all duration-300">

@@ -125,7 +125,7 @@ const Navbar = () => {
 
     {/* Menu (Hamburger) Icon */}
     <svg
-      className={`absolute top-0 left-0 w-6 h-6 transition-all duration-300 ease-in-out ${
+      className={`absolute top-0 left-0  w-6 h-6 transition-all duration-300 ease-in-out ${
         menuOpen ? 'opacity-0 rotate-45' : 'opacity-100 rotate-0'
       }`}
       fill="none"
@@ -141,7 +141,7 @@ const Navbar = () => {
 
         <div
           ref={menuRef}
-          className={`${menuOpen ? 'fixed top-0 z-30 animate-slideDown' : 'hidden'} w-full md:flex md:w-auto md:order-1 transition-all duration-100`}
+          className={`${menuOpen ? 'fixed top-0 z-30 animate-slideDown' : 'hidden'} w-full md:flex md:w-auto md:order-1  transition-all duration-100`}
           id="navbar-sticky"
         >
           <ul className="flex flex-col p-4 pt-[7vh] md:pt-4 rounded-b-xl relative z-30 bg-black border border-black md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:bg-transparent md:border-0">

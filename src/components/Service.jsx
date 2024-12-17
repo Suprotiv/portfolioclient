@@ -18,7 +18,7 @@ const Service = ({ title, description, icon, backgroundImage, orientation }) => 
   <div
   className="blur-load"
   style={{
-    backgroundImage: `url(lowres/${backgroundImage.slice(0, -5)}_lowres.jpg)`,
+    backgroundImage: `url(lowres/${backgroundImage.split('.').slice(0, -1).join('.')}_lowres.jpg)`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
