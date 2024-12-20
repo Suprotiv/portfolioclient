@@ -40,13 +40,13 @@ function Main() {
         {/* Video background */}
         <video
           className="absolute inset-0 w-full h-full object-cover z-0 opacity-45"
+          src="website_bg.mp4"
           autoPlay
           loop
           muted
           playsInline
-        >
-          <source src="website_bg_1.mp4" type="video/mp4"/>
-        </video>
+          type="video/mp4"
+        />
       </div>
     </div>
   );
