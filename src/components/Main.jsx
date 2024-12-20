@@ -45,7 +45,7 @@ function Main() {
           muted
           playsInline
         >
-          <source src="website_bg.mp4" type="video/mp4"/>
+          <source src="website_bg_1.mp4" type="video/mp4"/>
         </video>
       </div>
     </div>
