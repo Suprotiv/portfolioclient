@@ -25,6 +25,19 @@ const Clients = () => {
 
   const xTranslation = useMotionValue(0);
 
+  
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []); // Initialize smooth scrolling
+
   // Fetch client data
   useEffect(() => {
     const fetchClients = async () => {
@@ -43,7 +56,7 @@ const Clients = () => {
   // Scrolling animation
   useEffect(() => {
     let controls;
-    const finalPosition = -width / 2 - 8;
+    const finalPosition = -width / 2 - 19;
 
     if (mustFinish) {
       controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
@@ -72,7 +85,7 @@ const Clients = () => {
   }
 
   return (
-    <div className="relative py-8 h-[50vh] mt-10 overflow-x-hidden flex justify-center items-center ">
+    <div className="relative py-8  h-[50vh]  mt-5 md:mt-10 overflow-x-hidden flex justify-center items-center ">
       {/* Title */}
       <div className="absolute top-0 flex justify-center items-center ">
         <h1 className="text-white font-bold text-4xl">Clients</h1>
@@ -80,7 +93,7 @@ const Clients = () => {
 
       {/* Carousel */}
       <motion.div
-        className="absolute left-0 flex gap-12"
+        className="absolute left-0 flex  gap-10"
         style={{ x: xTranslation }}
         ref={ref}
         onHoverStart={() => {
