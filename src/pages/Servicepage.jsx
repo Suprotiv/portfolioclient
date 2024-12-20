@@ -16,14 +16,14 @@ const Servicepage = () => {
       title: 'Commercial Advertisements',
       description: 'Professional video content tailored for your brand, including promotional videos, testimonials, and more. I will provide videos that reflect a consistent style and align with your brand’s unique identity, perfectly suited for your brand’s website, social media or any other platform',
       icon: faBullhorn,
-      backgroundImage: '/thumbnail_6.webp',
+      backgroundImage: '/commercial.jpg',
       orientation: 'right' // Image on the right
     },
     {
       title: 'Long Form Content',
       description: 'Long form editing packages designed for content creators, including thumbnails and optimized SEO for your Youtube and other video hosting platforms',
       icon: faVideo,
-      backgroundImage: '/LFC_1.jpg',
+      backgroundImage: '/LFC.jpg',
       orientation: 'left'
     },
     {
