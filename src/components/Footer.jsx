@@ -42,19 +42,19 @@ const Footer = () => {
 
         {/* Navigation Links */}
         <div className="flex justify-center space-x-8 mb-6">
-          <Link to="/" className="hover:text-[#1fd1ff] transition-all duration-300">
+          <Link to="/" className="hover:text-[#1fd1ff] text-xs md:text-base transition-all duration-300">
             Home
           </Link>
-          <Link to="/portfolio" className="hover:text-[#1fd1ff] transition-all duration-300">
+          <Link to="/portfolio" className="hover:text-[#1fd1ff] text-xs md:text-base transition-all duration-300">
             Work
           </Link>
-          <Link to="/about" className="hover:text-[#1fd1ff] transition-all duration-300">
+          <Link to="/about" className="hover:text-[#1fd1ff] text-xs md:text-base transition-all duration-300">
             About
           </Link>
-          <Link to="/contact" className="hover:text-[#1fd1ff] transition-all duration-300">
+          <Link to="/contact" className="hover:text-[#1fd1ff] text-xs md:text-base transition-all duration-300">
             Contact Me
           </Link>
-          <Link to="/services" className="hover:text-[#1fd1ff] transition-all duration-300">
+          <Link to="/services" className="hover:text-[#1fd1ff] text-xs md:text-base transition-all duration-300">
             My Services 
           </Link>
         </div>
