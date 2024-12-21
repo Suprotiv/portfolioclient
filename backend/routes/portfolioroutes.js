@@ -75,13 +75,18 @@ router.get('/getprojectsBanner', async (req, res) => {
 
 
 
-router.get('/getclients', async (req,res)=>{
-    
-    const projects= await ClientModel.find({})
+router.get('/getclients', async (req, res) => {
+  try {
+    // Fetch 9 random clients
+    const projects = await ClientModel.aggregate([{ $sample: { size: 9 } }]);
 
-    res.json(projects)
+    res.json(projects);
+  } catch (error) {
+    console.error('Error fetching clients:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
-})
 
 // POST request to add a new client
  // Replace with a secure secret key
