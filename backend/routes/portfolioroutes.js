@@ -87,6 +87,18 @@ router.get('/getclients', async (req, res) => {
   }
 });
 
+router.get('/getclientsadmin', async (req, res) => {
+  try {
+    // Fetch 9 random clients
+    const projects= await ClientModel.find({})
+
+    res.json(projects);
+  } catch (error) {
+    console.error('Error fetching clients:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 
 // POST request to add a new client
  // Replace with a secure secret key
