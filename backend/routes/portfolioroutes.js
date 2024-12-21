@@ -33,13 +33,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
-router.get('/getprojects', async (req,res)=>{
-    
-    const projects= await Portfoliomodel.find({})
+router.get('/getprojects', async (req, res) => {
+  try {
+    // Use aggregation with $sample to randomize the order
+    const projects = await Portfoliomodel.aggregate([{ $sample: { size: 50 } }]);
 
-    res.json(projects)
-
-}) // Adjust the path as needed
+    res.json(projects);
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+ // Adjust the path as needed
 
 router.get('/getprojectsBanner', async (req, res) => {
   try {
