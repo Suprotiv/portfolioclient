@@ -1,7 +1,7 @@
-import React, {useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import LazyLoader from './LazyLoader';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import LazyLoader from "./LazyLoader";
 
 function Video({ video }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,45 +21,45 @@ function Video({ video }) {
         className="blur-load"
         style={{
           backgroundImage: `url(http://api.rounak.co/clients/${video.image
-          .split('/')
-          .pop()
-          .split('.')
-          .slice(0, -1)
-          .join('.')}_lowres.jpg)`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
+            .split("/")
+            .pop()
+            .split(".")
+            .slice(0, -1)
+            .join(".")}_lowres.jpg)`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
           aspectRatio:
-            video.orientation === 'Landscape'
-              ? '16 / 9'
-              : video.orientation === 'Portrait'
-              ? '9 / 16'
-              : '47 / 68',
+            video.orientation === "Landscape"
+              ? "16 / 9"
+              : video.orientation === "Portrait"
+              ? "9 / 16"
+              : "47 / 68",
           maxHeight:
-            video.orientation === 'Landscape'
-              ? '264px'
-              : video.orientation === 'Portrait'
-              ? '409px'
-              : '680px',
-         
-          height: '100%', // Ensures the container takes the full height
+            video.orientation === "Landscape"
+              ? "264px"
+              : video.orientation === "Portrait"
+              ? "409px"
+              : "680px",
+
+          height: "100%", // Ensures the container takes the full height
         }}
       >
-       <div
+        <div
           key={video.id}
           className={`relative group overflow-hidden inline-block cursor-pointer w-full h-full inner-div ${
-            video.orientation === 'Landscape'
-              ? 'aspect-w-16 aspect-h-9  md:max-h-[264px]'
-              : video.orientation === 'Portrait'
-              ? 'aspect-w-9 aspect-h-16  md:max-h-[409px]'
-              : 'aspect-[47/68]  md:max-h-[680px]'
+            video.orientation === "Landscape"
+              ? "aspect-w-16 aspect-h-9  md:max-h-[264px]"
+              : video.orientation === "Portrait"
+              ? "aspect-w-9 aspect-h-16  md:max-h-[409px]"
+              : "aspect-[47/68]  md:max-h-[680px]"
           }`}
           onClick={handleThumbnailClick}
         >
           {/* Thumbnail Image */}
           <img
             src={video.image}
-            alt={video.alt}
+            alt={video.title}
             className="relative z-10  object-cover transition-all duration-300 group-hover:scale-110 w-full h-full"
             loading="lazy"
           />
@@ -89,7 +89,7 @@ function Video({ video }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4 sm:p-8">
           <div
             className="relative w-full max-w-lg sm:max-w-xl lg:max-w-4xl p-4 sm:p-6 bg-black rounded-lg"
-            style={{ width: '90%', maxWidth: '800px' }}
+            style={{ width: "90%", maxWidth: "800px" }}
           >
             <button
               onClick={handleCloseModal}
@@ -99,8 +99,8 @@ function Video({ video }) {
             </button>
             <iframe
               className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-lg"
-              src={isModalOpen ? video.video : ''}
-              title={video.alt}
+              src={isModalOpen ? video.video : ""}
+              title={video.title}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

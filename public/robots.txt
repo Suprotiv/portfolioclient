@@ -1,0 +1,6 @@
+User-agent: *
+Allow : /
+Disallow : /services
+Disallow : /about
+Disallow : /portfolio
+Disallow : /contact
