@@ -30,7 +30,7 @@ const Servicepage = () => {
       title: 'VFX',
       description: 'Special effects, green screen keying, compositing, and 3D integrations for creating powerful, cinematic visuals that captivate audiences and enhance storytelling. Whether adding realistic elements or transforming backgrounds, I bring creativity and technical precision to achieve high-impact effects to your videos',
       icon: faMagic,
-      backgroundImage: '/vfx.webp',
+      backgroundImage: '/vfx.webp1234',
       orientation: 'right'
     },
     {
